@@ -1,0 +1,40 @@
+Gathering requirements
+
+Naive asking client to determine what they need.
+
+Methodical way is through use cases and user flow
+Use case is a scenario in which our system is used
+User flow is a step by step / graphical representation of each use case
+
+- Identify all actors/users in a system
+- Capture and describe all possibe use cases / scenarios
+- Take each use case and expand through flow of events
+events contains action and data
+
+Example
+Allow people to join drivers on a route, who are willing to take passengers for a fee
+actors are driver and passenger(rider)
+use cases include 
+- registeration by rider(first time)
+- registeration by driver
+- rider login
+- rider logs in
+- successful match and ride
+- unsuccessful ride
+
+Sequence diagram represents interaction betwenn actors and objects and is 
+part of a unified modelling diagrams. It is mostly used for software design and there is no real
+standard representing architecture in the industry
+UML is not strictly folllowed in the industry and
+Sequence diagrans are frequently used to represent interactions betwenn entities
+
+Time goes from top to bottom connection by arrows and response by broken arrows from destination entity to caller entitu
+
+successful match and ride (Data not in diagram)
+Drider notifies system about route and availability
+A rider send destination and location and need
+Match is found and both driver and rider are notified
+Ride Started is registered by system from driver on rider pickup and rider is notified that ride has Started
+Driver sends ride finish to system and system charges rider and notifies rider and driver and fee are taken driver is notified of payment
+
+Each interaction is an api call

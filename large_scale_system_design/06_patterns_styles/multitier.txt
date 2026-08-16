@@ -1,0 +1,58 @@
+Organizes system into multiple tiers of physical and logical tiers
+
+physical tiers: separates tiers from one another to be deployed scaled and upgraded separately
+logical tiers: limits scope of responsibility on each tier
+
+multi tier and multilayer are two different things
+multilayer refere to separation in a single app into multiple layers or modules but at runtime run as a single unit and is a single tier
+multi tier runs each tier on a different machine
+
+Restrictions that simplify its design
+Application pairs with adjacent tiers communicate using client server model
+Communication skippping tiers is discouraged and an anti pattern
+
+
+Three tier architecture
+most common and popular for client server web based services
+Top level contains user interface know as presentation tier take user input and  presents information to user e.g mobile app, web page desktop gui
+Does not contain business logic as code on client is accessible and visible to user hence it is an anti pattern to include business logic in this tier
+Scales by itself
+
+Middle tier app/business/logic tier
+Provide functionality and feature
+processes data fro prsentation adn applies logic to it
+
+Data tier: Stores and persist user data like files and commonly includes a database
+
+- Popular because it fits a large variety of use case like online store, news website
+- Easy to scale and handle a lot of data and traffic
+presentation needs to scaling and application can be placed behind a load balancer and data can be scale by partitioning and replication
+It is easy to maintain as logic is centralized.
+
+Drawback
+- Monolithic structure of logic tier with high cpu and memory consumption making app slower and less responsive
+May require upgrading computer vertically which s expensive and limited
+- Low development velocity harder to develop maintain and reson about because of more merge conflict
+Limited organization scalability
+
+
+Perfect for relatively small codebase that is not complex and small team of developers
+
+OTHERS
+
+A single-tier architecture (or 1-tier architecture) puts all parts of a software program—the user interface, business logic, and data storage—on one single machine or device. Nothing runs over a network or relies on a separate remote server.
+Microsoft Notepad / Text Editors
+Calculators
+Local Microsoft Excel / Access File
+
+
+Two tier top level include presentation and logic as a mobile/desktop app
+and a Data tier
+Faster and more native experience
+Eliminates overhead of logic tier
+Examples document, image and music editors where storge and backup takes place on provider
+
+Fourth tier
+Separates functionalities that is between presentation and app tier like caching and others with api gateway tier
+
+More tiers are extremely rare as this increases overhead

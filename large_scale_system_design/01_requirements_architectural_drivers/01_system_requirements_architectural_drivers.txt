@@ -1,0 +1,37 @@
+Requirements: formal description of what we need to build
+
+
+Challenges
+- Scope and Level of abstraction
+- Ambiguity is high as the requirements is often not an engineer or technical
+
+Getting requirements is part of the solution as client does not always know hat thet need but they know what roblem they need to solve
+
+
+Example: allow people to join drivers on route who are willing to take passengers for a fee
+clarifying questions like payment method, user experience(mobile, desktop), realltime vs advance resrvation
+
+If requirements are not gathered we face issues like:
+Not being able to easily change the system as it is large
+Number of engineers involved wastes engineering resource
+Waste of time
+Waste of hardware and software cost
+Contract and financial obligations
+
+Requirement types
+- Features of a system (functional requirements)
+- Qualities system (non functional requirements)
+- System constraints (limitations and boundaries)
+
+Features: Describe system behaviour and can be easily tied to the system's objectives
+users input / events are inputs and the softwares actions are outputs
+features do not determine a systems architecture
+Examples: when a rider logs into the app the system must display a map with nearby drivers within 5 mile radius
+When ride is completed system will charge and credit driver minus service fees
+
+Qualities are properties system must have as opposed to what it must do   like
+scalability, performance, reliability, security, availability all which depend on system
+Qualities do determine a systems architecture as they determine the system's qualities
+
+Constraints include time, money and engineering resouce available and they are
+referred to as architectural driver as the determine architecture that satisfies client needs

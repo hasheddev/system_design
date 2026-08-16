@@ -1,0 +1,16 @@
+Architectural patterns are repeatable solutions to commonly occurring system design problems
+Solutions to architevtural problems that involve multiple components that run as separate runtime units
+
+Successfull practices from mistakes and what worked from observation by architects of other companies and industries solving similar design problems
+become the architectural patterns
+
+Why we use them
+- Saves valuable time and resources by using already found solutions
+- Avoid making our architecture resembling a big ball of mud where every service talls to every other service and tightly coupled
+information is global and duplicated with no clear scope of responsibility for components
+This might happen due to rapid growth or lack of well defined architecture and a system in this situation is very hard to develop maintain and scale
+- Other engineers can continue working with our system and follow along with it
+
+All patterns are guidelines we choose what is suitable
+As system evolves certain architectural pattern may no longer fit our need. The best part of following the patterns is that many companies went through the migrations in the past so we can folllow their
+best practices to make migrations quickly and safely

@@ -1,0 +1,35 @@
+- Motivation
+
+Everything has a structure and more investement in building means it is harder to change
+Structure describes intent and qualities of a product
+Software architecture gives us infinite ways to otganize our code and different organizations gives us different properties
+It impacts the performance  and scale of product, ease of adding new features and response to failure or security attck
+Cost of redesign will be significant in terms of time and money for poor arcitecture
+
+- Artitecture Definition
+It is a high level description of a system's structure, different components and how they interact with each other to fulfill the
+system's requirements and constraints
+
+- Artitecture Definition Explanation
+High level: an abstraction that shows important components that help reason about system while hiding implementation e.g technologies and languages
+are part of implementation
+Components & communication: defined by behaviours and apis that may be complex system with their own architectural diagrams
+Requirments & constraints: describes how components do what they must do and must not do
+
+Levels of abstraction
+- classes/structs
+- modules/packages/libraries
+- Services(processes/groups of processses) ***
+The more distributed approach allows for the handling of large requests, store and process large amount of data and serve many users per day
+e.g ride sharing, social media, banks, video games, video platforms, investment services
+
+Right architecture can mean going from a small startup to a multi billion dollar company
+and wrong job in design phase means a waste ot engineering time and system that does not meet requirements needs to berestructured which  is very hard and expensive
+
+- Software Development Cycle
+Design, implementation, testing and deployment
+
+Design is the most important and all four phrases may be repeated
+Architecture is the output of design and input to implementation phase
+Design defines architecture to be implemented and can be challenging as it cannot be proven to be correct / optimal
+Hence success is guaranteed by following methodical design process, architectural patterns and industry best practices

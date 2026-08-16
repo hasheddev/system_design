@@ -1,0 +1,25 @@
+Factors that affect availability
+Human error: partially tested code, running rung script
+software error: memory exceptions, segfaults
+hardware failures: servers, storage breaking down due to limited shelf life, network failure, power outages dues to natural disasters
+
+The best way to achieve availability is through fault tolerance
+this is the ability of a system to remain operational and available inspite of failure to one or more components
+This allows operayions at or reduced level
+This is achieved through failure prevention, failure detection and isolation   and recovery
+- failure prevention through eliminating single point of failure through replication/redundancy
+spatial redundancy through replication and time redundancy by repeating action till success or failure
+
+replication strategies: active active architecture e.g request goes to all replicas
+active passive: One primary active and secondary replicas that take periodic snapshot
+
+active active reduces load, allows for more traffic and bettter performance
+disadvatage is overhead in syncing replicas
+active passive allows for less loead but is easier to impelemnt
+
+- failure detection by monitoring the system and taking action on failure detection we might have a false positive but this is acceptable
+but false negatives are unacceptable monotoring can monitor exceptions, errors not just pings and heartbeats and use high exception threshold
+to determine failure or collect processing time and toolon time can be used to determine failure
+
+- recovery after detection and isolation we stop sending request to the host, restart or rollback as three types of recovery measures
+we can use rollback in case new software version is error prone

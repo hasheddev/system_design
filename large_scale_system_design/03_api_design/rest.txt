@@ -1,0 +1,42 @@
+Representational state transfer not a standard or protocol but an architectural style.
+Makes it easy for client to understand and allows for scalability, availability and performance
+
+Restful api deals more with resources while rpc deals with methods/interface exposed to the client
+Rpc is expanded by adding more methods
+Rest abstracts away named resources/entities
+Rest alow user to manipulate resource through a small number of resource
+Client requsts for resource and gets a representation of the current resource state
+E.g request for homepage resource gives back a homepage html
+
+Rest api is dynamic as clientcan follow up based on response while rpc actions are static and are as defined
+
+RESTFUL Apis allows for performance, scalability and high availability
+
+- Statelessness
+Server does not maintain session information or info about previous request
+- cacheability
+Enables client to eliminate potential requests and reduce load on system
+
+Named resources
+URI addresses names resources in a hierarchy starting with /, each resource is either a simple or a collection resource
+A simple resource has a state and can contain one or more sub resource
+A collection resource contains a list of resources of same type e.g movies with collection of type movies
+with subresource actors, directors(simple resources), actor with subresource profile
+
+
+Best practices
+- Name resource using nouns
+- Make distinction between collection and simple resources use singular name for simple resources but plural for collection resources
+movies/id/actors(collection)/id/profile-info(simple)
+- Give resources clear and meaningful names making user easily use api do not use items,values,objects,entities and the like
+- Resource identifiers should be url friendly
+
+GET method is idempotent, so is PUT and DELETE,  PATCH and POST are not
+POST cn be made cacheable, GET is cacheable by default
+
+
+Creating Restapi
+- Identify entities
+- Map entities to URIs
+- Define resource representations like JSON {movies: [{name, id}]}
+- Assign HTTP methods to operations on resource

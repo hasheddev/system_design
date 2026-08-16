@@ -1,0 +1,21 @@
+Scalability is the measure of the systems ability to handle a growing amount of work in an easy and cost effective way with the addition of more resources
+
+vertical scaling horizontal scaling, team scaling
+
+vertical scaling means adding more resources or upgrading resources on a single computer to handle more work
+horizontal means adding more units of resoure to allow system to handle more load i.e machines to improve performnce
+vertical scaling benefits without code changes and migration is simple from smaller to bigger machine and back
+and the application benefits from it
+Its cons is that we reach its limit fast and we  lock system to a centalized one which has low availability and fault tolerance
+
+horzontal scaling:  has no limits, is easy to add/remove and has high availability and fault tolerance
+Its cons are it requires code changes initially and it increases in complexity and coordination overhead
+
+team scalability
+adding more engineers and measuring productivity against number
+performance can be degraded because of code merge conflicts, crowded meetings(less productiove) abd more complex time to learn by new dev
+and testing becomes slower and harder and releases become very risky
+
+this is achieved by using services to allow for scaling instead of using different modules
+
+We can scale in one dimension, two or three as they are independent(ortjogonal)

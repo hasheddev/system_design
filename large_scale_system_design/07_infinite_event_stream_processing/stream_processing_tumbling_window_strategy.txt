@@ -1,0 +1,40 @@
+Infinite stream of events from different sources like users, 3rd party services, iot devices and reading and processing events in isolation mighe be enough however we migh need to aggregate and analyze events so we use finite windows to analyze streams
+e.g anomaly detection, fraud detection, pattern recognition, rate limiting, recommendation service which are useful in big data pipelines and microservice architecture.
+
+Tumbling windows is the simplest strategy when windows are divided into fixed back to back non overlapping time buckets by the consumer and every event consumed when a window is 
+opened is added to the current window and when end is reached events are aggregated and the result is produced as a single event and once current window is closed a new one is created for a fixed time interval and all current events are
+added into the new one where old data from previous is discarded and the broker is unaware of this window the consumer buffers the events in memory till bucket expires and result stored elswhere, this consumes more memory the more time a bucket takes.
+e.g measurement from a temperature sensor in a 10 seconds calculating average or log analysis for every hour to calculate error rate and take action by sending an alert to the notification service to alert an engineer or aggregate sales on daily window division to group
+sellers and analyze revenue in the last 24 hours storing in db or sent as an email to seller or consumed by payout service to pay seller
+
+
+Pros
+Simple
+Ideal for periodic discrete aggregations with minimal memory/computational overhead and clear time boundaries like minutes, hours, days
+When events are to be processsed only once as they belong to only one window
+
+Cons
+Low granularity as frequncy of getting insights is limited by window size and updates cannot come faster like high spike in error which might already have serious financial consequence, or selle ronly getting report after 24 hours
+Not good for trend recognition as series of event may be broken into two discrete windows that may not show trends as they would have in a single window e.g 10 error per hour broken into 3, 7
+(Alerts and smooth trend analysis)
+
+Examples
+Reporting Latency (The Notification Problem): If you use a 1-hour tumbling window, a seller whose sales plummet or surge at 12:01 PM won't get an alert until 1:00 PM, when the window finally closes and emits its result.
+
+Boundary Boundary Artifacts (The Trend Problem): If a user buys 100 items at 11:59 AM and 100 items at 12:01 PM, a 1-hour tumbling window splits those events across two separate windows (11:00-12:00 and 12:00-13:00). It misses the fact that 200 items were bought in a 2-minute span.
+
+
+
+Good use cases
+1. Non-Overlapping Financial & Operational Aggregations
+Hourly / Daily Revenue Reconciliation: Calculating total gross merchandise value (GMV) from 12:00 AM to 11:59 PM. Every order belongs to exactly one day's accounting bucket.
+
+Hourly API Billing: Calculating total API calls or data bandwidth consumed by a seller per hour to bill them accurately without double-counting events.
+
+2. Exact-Once Batch Emission to Downstream Systems
+Data Warehouse Ingestion (ETL): Aggregating raw clickstream logs into hourly summaries before writing them to a data warehouse (like Snowflake or BigQuery).
+
+Batch Downstream Processing: Reducing high-throughput streams (100,000 events/sec) into manageable fixed summary records (e.g., 1 summary event per minute per seller) to prevent overwhelming a database.
+
+3. Distinct Window Metrics
+Daily Unique Active Users (DAU): Deduplicating and counting unique user IDs between 00:00 and 23:59 each calendar day.

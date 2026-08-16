@@ -1,0 +1,34 @@
+Once we split our code to diffrent services we need our frontendto be aware of the different services and their endpoints and each service now needs to reimplement security, authentication and authorization
+We reduce redundancy, decouple client and simplify our external api using an api gateway
+An api gateway sists between the client and a collection of backend services it follows an architecture called api composition
+We compose all apis into one single api
+
+Benefits
+Allows internal change and refactoring to apis e.g splitting video service to high and low resolution
+Consolidates security, authorization and authentication
+Allows Role based access  control, Rate limiting and other security features
+Improves system performance with checks in a single place we save user from making multiple requests to different services by aggregating requests it makes into a single response in place of user
+Caches response and static content reducing latency
+Monitoring and alerting by gaining real time visibility to traffic pattern alerting us to drops and increase in traffic
+Protocol translation where externally we expose Rest but internal service use another protocol
+
+Considerations and Anti-Patterns
+Main purpose of api gateway is api composition and routing we should not add business logic to api gateway we may end up with the problem we want to solve by splitting our  system into services with a service that does all the workloads and contains unmanageable amount of code
+It may become a single point of failure which can be solve with multiple insatnces of gateway service behind a load balancer, it might also be crushed if a bug is inttroduced with a bad push so we need to be extra careful and eliminate any human error and deploy new api gateway with caution
+Avoid bypassing api gateway from external service this makes changes faster and more simple with less code changes and avoids coupling service to client
+
+RESOURCES
+Open Source API Gateways
+Netflix Zuul
+Zuul is a free and open-source application gateway written in Java that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.
+
+Cloud-Based API Gateways
+Amazon API Gateway
+Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. Supports RESTful APIs and WebSocket APIs (bi-directional communication between client and server).
+
+Google Cloud Platform API Gateway
+Google Cloud Platform API Gateway enables you to provide secure access to your services through a well-defined REST API that is consistent across all of your services, regardless of service implementation. It is designed for serverless workloads on GCP. For full documentation, follow this link.
+
+Apigee is Google Cloud’s API management product that enables organizations to build, manage, and secure APIs — for any use case, environment (on-premises, in Google Cloud, or a hybrid environment), or scale. For full documentation, follow this link.
+
+Microsoft Azure API Management

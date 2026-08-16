@@ -1,0 +1,18 @@
+Tumbling, hopping and sliding windows have fixed sizes but in certian scenarios we want to analyze a sequence of events that may take a variable amount of duration followed by a period of inactivity like user behavious on individual and aggregate level we track based on session
+
+A dynamic session window starts and when a particular threshold is reached of inactivity it is close and the result are summarized, categoried and saved or published, time is determed by first and last event.
+It is also common for IOT devices like vacuum cleaner with sessions of variable length or a navigation session in a navigation app for route optimization and stops when there is no activity
+
+Session is not global and is for user, key and there might be overlapping sessions for multiple user but each user only has one session
+
+Excellent for realtime analytics of users when using app or service
+Dynamic size allows grouping of activity
+Each event in session belong to only one window
+
+Defining inactivity threshold is a challenge as typically users just stops using app or just switches to new tab and we cannot tell if they are temporarily distracted or have switched to another activity
+If inactivity threshold is short we might split same session or long thresold consumes more memory if user remian inactive
+Many windows may be maintained at the same time especially if user activity is long we can run multiple insatnces to solve this and dedicate an insatnce to a set of keys and monitor memeory and cpu to scale as needed
+
+Use a Session Window if you want to capture human activity and intentional engagement (e.g., user browsing habits, active sessions, checkout workflows).
+
+Use a Sliding Window if you want to monitor system rules, continuous thresholds, or rate limits (e.g., security rate-limiting, fraud detection, real-time metrics).

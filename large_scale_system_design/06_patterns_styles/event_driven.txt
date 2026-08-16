@@ -1,0 +1,16 @@
+An event driven architecture avoids dependency of services and instead of direct messages we have only event. Events are immutable statements of facts or changes e.g item added to cart(fact), player of video game(change) moving from place to place
+Event emitter/Producers
+Channel
+Consumers
+
+- We get a lot benefits in microservice architecture where services need to only produce events and need not know about each other giving higher scalability horizontal and organization.
+- Allows us to analyze streams of data detect patterns and act upon them in real time e.g fraud detection service checking transactions from different locations at short intervals time for far distance apart or multiple transactions within a short amount of time
+freezing user account and notifying user
+- Allows us of powerful architecture like event sourcing pattern where replaying event can allows storage of event to replay whenever we need certain state information from event log we can use this to generate statements and store events for as long as we want.
+We can make quesry faster with snapshot events summarizing events up to that months
+- We can use CQRS pattern  command query responsibility segments which optimizes a database with high load of read and update operations where concurrent operations contend making operations slow.
+We can also optimize  a distributed database at the expense of the other but with frequent occurence of read and write we can use cqrs to separate the operations into different databases with two services using a broker to communicate
+We can join multiple tables in separate databases for queries where a specialized read only database stores a materialized join ready view of data from multiple services
+
+USE CQRS to JOIN data fromm ultiple service
+use to separate datadase when there are conflicting requirements by different actors

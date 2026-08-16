@@ -1,0 +1,31 @@
+Relational databases store data in tables(rows and columns) and a row is a record and models an object/resource and these tables and rows link to each other using special fields called keys. Records are ralated to each other through
+a set of predefined columns that they all have hence the name. Each column has a name, type and optionally a constarint. Each record is uniquely identified by a key called primary key (one or more columns). The structure(schema)
+is predefined giving us the knowledge of what each record mush have we can manage and analyze data with a robust query language called sql(structured query language).
+Each implementation of a relational database have their own additional features to thei version of the language with standard operations remaining the same in all.
+Relational databases have been well known and proven since the 1970 to structure data well
+Storing data in multiple atbles allows us to eliminate the need for data duplication
+While storage became cheaper data stored is bigger hence cost is still a concern
+
+Advantages
+Complex and flexible queries can be performed
+Storage is Efficient
+It is a natural structure for humans
+Has  ACID  gurantees atomicity, consistency isolation and durability
+ACID: A transaction is a set of operations that for an observer should appear as a single one
+Atomicity: each set of operations part of one transaction either appear all at once or not at all
+Consistency: guarantees that a transaction already committed is seen by all future queries/transactions and transactions do not violate any data constriant
+Isolation: guarantees concurrent transaction will not see intermediate states of another transaction
+Durability: once a transation is complete its final state will persist and remain permanent in the db
+
+Disadvantages
+Rigid structure enforced by schema needs to be defined prior and makes adding/removing columns lead to maintenace time hence we need to be careful and thorough to not change at all or change very little
+Hard to maintain/scale due to ACID
+Slower read operations
+
+When to use
+When we need to perform complex and flexible queries to analyze data
+When Acid transactions is needed
+
+When not to use
+If there is no inherent relationship between records that justifies table storage
+Read performance is the most important for good user experience

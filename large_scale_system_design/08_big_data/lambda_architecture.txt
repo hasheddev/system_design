@@ -1,0 +1,27 @@
+Batch processing resulted in delay in  data insight becoming available while realtime could not provide insight into historic data
+
+Some use cases do not allow for tradeoffs that the two methods come with e.g
+When processing logs engineers need realtime but if we want to compare performance of new deployment we nedd access to realtime and historic data from weeks or months, automatic anomaly detection we need realtime and historic data
+to detect anomalies. Ride sharing service need real time and historic data are needed to match riders and rides in real time and historic data to detect locations with fewer rides or know busy times and days when a lot of clients need rides
+ to give drivers insight to make decisions to make staedy indome and provide enough rides
+
+Lambda architecture was coined by nathan marz based on his experience working on big data, it attempts to find a balance between low latency from real time processing and high fault tolerance and comprehensiveness from batch processing
+There are 3 layers
+Batched, speed layer and serving layer
+Data is dispatched into both batch and speed layers.
+
+Batched layer is similar to batch processing and manages datasets and is a system of records that uses distributed file system designed to store bu files containing massive amount of data
+It precomputes batched view it indexes and overwirtes precomputed views in read only database previously created. It aims at perfect accuracy
+
+Speed layer uses realtime processing startegy with a message broker processing new event and adds record to real time view
+It perates only on most recent data
+
+Sercing layer esponds to queries and merges data from batch layer and real time views
+
+Example from adtech industries we have advertisers like online stores or concert and we also have content producers like news websites or blog websites who make money by leaving slots on theri satellite
+Whenever user sees or clicks adds content producer is paid a small fee the system acts as a middle man and provides advertisers websites to advertise on and content producers advertisers and content producers advertisers willing to provide adds and pay money
+
+When a user open a website the site request an ad from system and we send an add that is most relevant to user and send to website, the big data part processes user scroll to view event, user click ads and user makes purchase on advertiser website. All events go
+to the speed and batch layer and the serving layer serves data relevant to request
+e.g advertiser asks for current users viewing their ads or how many ads shown to user in 24 hours if batch layer processes events every 2 hours we need last 2 hours from speed layer and 22 from the batch layer or advertiser asks how much is required to be spent before user makes a purchase
+A user may view an ad multiple times on on different website and make pruchase weeks after clicking so we rely on combining data from both layers

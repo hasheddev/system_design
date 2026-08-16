@@ -1,0 +1,28 @@
+Monolithic is called because all business logic is in one single service
+
+As size and complexity of codebase grows it becomed difficult to build, test, add new features, trouble shoot and load in our ide
+Organization scalability becoms an issue as the more engineers the more code merge conflicts meeting become larger longer and less productive
+
+Microservice is the next step at this stage
+
+Organizes business logic as a collection of loosely coupled and independently deployed services
+
+Each service is owned by a samll team and has a narrow scope of responsibility
+
+- Narrow scope makes code base a lot smaller with faster and easier development, building, testing, add new features, trouble shooting and load in our ide
+becomes easier and new developers become more productive faster
+- Better performance and horizontal scalability as instances becomes less cou intensive and memory intensive
+- High throughput from entire organization as a whole gives organnizational scalability with autonomus decisions on service tecnologies
+- Better security due to isolation faults are also isolated and are easier to mitigate
+
+Best practice
+Benefits do not come out of the box if we do not follow best practices
+Overhead and challenges ave to be considered
+- Services must be logically separated such that every change in a service happens in only one service and involves only one team
+Use single responsibility principle each service is responsible for one capability, domain, resource or action e.g imager, user, matching, billing
+Gateway can be broken down into micor services
+- Database separated to avoid coupling of services data must be split to make each service independent but data duplication is expected overhead
+
+
+Benefits despite overhead and complexity comes only after a certain complexity and organization scale and follwing best practoces on reaching this scale
+Start with simple monolithic approach and when it stops workin use microservice

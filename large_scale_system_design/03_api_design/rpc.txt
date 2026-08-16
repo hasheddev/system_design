@@ -1,0 +1,37 @@
+Remote Procedure Call (RPC) is a software communication protocol that lets a program run a function or procedure on another computer or in a separate address space as if it were local called local transparency as execution
+looks mostly the sameRpc supports multiple languages
+
+Methods and arguments are defined (interface) and a code generation tool is used to generate server and client code called stubs
+Data are compiled internalto classes/stubs called dtos and on call client stub encode/serialize dta and calles remote server stub which
+deserializes and invokes the stub and returns response to client and the client presents result to caller
+Framworks,implementations and efficiency change but the concept remains.
+Api developers pick framework, define api and relevant data types with the framework interface description language and publish the description
+Client and server are decoupled and clients that want to use the resource use the client stub to generate the codefrom the published description
+If a framework that supports multiple language is used we allow for more choice
+
+Benefits
+Convenience to developers of client applications
+Communication with system by calling methods on objects like local methods
+Abstraction of communication establishment or data transfer between client and server
+Failures result in error or exception
+
+Drawbacks
+Remote methods are a lot slower and less reliable as time taken is unknown this is avoided by using asycn methods
+There is no real way to know cause of failure this can be mitigated by making operation idempotent when possible
+
+Use case
+Rpcs are used in backend communication systems
+They are perfect for internal system communication in a large system
+Apis  provided to different companies instead of an end user app/web page
+Abstraction of communication
+
+Not used
+When abstraction is not wanted
+When http cookies or headers are needed
+
+
+
+Rpc involves actions and less around data/resources
+Every action is a new method with a different name
+
+For crud operations or data centric we use other api types

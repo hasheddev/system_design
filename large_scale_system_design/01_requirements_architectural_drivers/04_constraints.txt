@@ -1,0 +1,29 @@
+Once system goals are determined we have freedom on its structure and must make a lot of decisions when defining
+the final architecture as there can be multiple ways to ensure the quality attribute is achieved,
+
+A system connstraint is a decision fully or partially made for us limiting our degree of freedom
+This might make our job easier and contraints are referred to as pillars because:
+- they provide a solid starting point
+- System need to be designed around them
+
+Types
+- Technical constaints: hardware, language, database, technlogy, os/browser, support
+All the above affect design decisions and put restrictions on architecture though they seem to belong to implementation
+e.g on premise deployment makes cloud resurces and services are no longer available
+support of older browsers or low end mobile affects api and sevices provided
+
+- Business constraints
+Architecture and implementation are affected by business constraints like time and budget as some patterns are betetr for smaller and larger organizations
+Constaints like third party services with apis and architectural paradigms like 3rd party billing/shipping
+
+- Legal constaints
+Global
+e.g HIPAA in the US restraints data accessed and stored and how long they can be retained
+Regional
+
+Considerations
+Take all constaints seriously: We should make distiction between real constaints like rules and regulations and self imposed(negotiable) constraints liek negotaible budget / time
+Exploration of hardware, vendor, and technologies
+
+Use loosely coupled architecture e.g db and third party sevice is not tightly coupled to our system such that using a different one takes minimal change
+and different system parts should be easily replaced and updated independently

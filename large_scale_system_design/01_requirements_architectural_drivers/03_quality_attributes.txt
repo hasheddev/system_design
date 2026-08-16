@@ -1,0 +1,39 @@
+Quality attribute motivation are important to avoid redesigning a system.
+
+Systems are redesigned not because of functional requirements but because the system:
+- Is not fast enough
+- Does not scale
+- Is slow to develop
+- Not secure
+- Hard to maintain
+
+Quality attributes are non functional requiements that describe the qualities of functional requirements and
+the overall properties of the system. They do not say what the system does but provide a quality measure on how well the system performs on
+a particular dimension
+The have direct corellation with the architecture
+
+Example: when user clicks on search button after typing search user gets a list of products that closely match search keywords within at most
+100 milliseconds(performance quality)
+Store must be available at least 99.9%
+Quality requirements do not only satisfy clients but all stakeholders e.g
+dev team can deploy a new version at least twice a week
+
+Attribute considerations
+- Measurable
+Testable
+We need to be able measure and test to know if our system meets the requirements
+e.g when user clisks on purchase confirmation must be displayed quickly to the user quickly cannot tell if time is fast enough
+There is not architecture that can provide all quality attributs
+Certain qualities contradict
+Some combination of attributes are very hard/impossible to achieve
+
+- Architect need to make tradeoff to get highest chance of success
+
+e.g Login under 1 second vs security (making login slower)
+
+- We need to make sure that system is capable of delivering client requirements
+as some requirements may be impossible or prohibitively expensive to achievee.g unrealistic low latency expectations
+100% availability hinders maintenance and failure threshold
+full protection against hackers, high resolution video streaming in limited bandwidth areas, very high storage growth
+
+Consult domain experts to check feasibility

@@ -1,0 +1,54 @@
+Cdns solve latency
+Google analytics shows 53% of mobile users abandoned a website if it took 3 seconds to load
+What user needs closer is static content to laod faster using Content Delivery Network speed up delivery to user.
+They were created to solve the wide world wait(bad user experience caused by bad internet connection or overloaded server)
+Ddns provide caching on their edge servers relocated at different points of presence
+Edges server are  phisically closer to users and strategically located in terms of network infrastructure allowing them to transfer
+content faster. Used to deliver images, text, css, js and videos live and on demand
+They are used by all service companies that interact with users through the internet like ecommerce services, saas companies, financial institutions,
+media companies(news/movie streaming) and social media companies
+
+Quality
+CDNs imporve performace with faster page loads
+High availability with slowness less noticeable
+Improves security and protects against ddos by ditributing request to servers
+
+Cdn providers use techniques to improve delivery speed like faster and more optimized hard drives to store content
+Use of compression algoritm to increase speed
+
+
+Strategies
+Pull strategy: tell cdn provider which content to cache and how often to cache
+This is configured by setting a TTL property on each type of asset or asset
+In this case cache is population only on user request first then resource served from it
+In case of expiry cdn request for resource and if valid refreshes expiry if not it replaces it with the new one on user request for the resource
+
+Push: We automatically publish content to cdn and we republish on change to cdn
+Some Cdns providers support this directly while others enable it by setting ttl for assets so the cache never expires and we purge the cache
+forcing the cdn to fetch the content from our servers whenever a user requests it
+
+Pull startegy has lower maintenance on our part everything is taken care of by provider but first users have more latency when product is not cached
+If assets expire at the same time we see a traffic spike and we get a large number of requests from cdn to refresh cache
+It needs hight availability as user will get an error if cdn asset expires and system is unavailable for cdn to pull new version
+
+Push Strategy: If push is only once, it reduces traffic and burden to maintain high availability
+If content changes frequently users might get stale and out of date content which is undesired
+
+CDN Solutions & Cloud Technologies
+Cloudflare
+Cloudflare offers ultra-fast static and dynamic content delivery over our global edge network. It helps reduce bandwidth costs and takes advantage of built-in unmetered DDoS protection.
+
+Fastly
+Fastly's Deliver@Edge is a modern, efficient, and highly configurable CDN that gives you the freedom to control how your content is cached so you can deliver the content your users want quickly.
+
+Akamai
+Akamai has a large variety of offerings for API Acceleration, Global Traffic Management, Image & Video Management, Media Delivery, and much more.
+
+Amazon CloudFront
+Amazon CloudFront is a content delivery network (CDN) service built for high performance, security, and developer convenience. Some of its use-cases include delivering fast secure websites, accelerating dynamic content delivery and APIs, live streaming, video-on-demand, and others.
+
+Google Cloud Platform CDN
+GCP CDN offers fast, reliable web and video content delivery with a global scale and reach.
+
+Microsoft Azure Content Delivery Network
+Microsoft's CDN solution offers global coverage, full integration with Azure services, and a simple setup.

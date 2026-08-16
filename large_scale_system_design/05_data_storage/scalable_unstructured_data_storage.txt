@@ -1,0 +1,56 @@
+Unstructured data is data that does not follow a particular structure schema or model like audio, vido, image and documents we use blobs to store them. Some dbs allow for blob storage. Most databases are not optimized to store unstructured data and those that documentsimpose struct limit
+on allowed sizes in megabytes to avoid performance and scalability problems
+
+Use cases
+User upload data for further processing like videos, images, documents for sahring compressing e.t.c
+We can also use this for snapshot and archive of our database with database specific binary format and used for disaster recovery and are unstructured and also archives for auditing.
+Web hosting data like images to be shared.
+Data sets for analytics for machine learning and big data analysis
+
+Data sets can be very big and every file can be very big too big for a database
+
+Solutions
+Distributed file system: abstarction as if stored on local device but with multiple devices connected over a network giving replication, autohealing, eventual/strong consistency depending on the system type.
+Files are stored in a tree like structure in directories.
+- We need no special apis to access Files
+- We can easily modify Files
+- Very efficient and high performance io operations
+
+- Suboptimal for large number of files limiting scalability
+- Files cannot be accesses through web apis
+
+Object store
+- Scalable solution designed for storing unstructured data at internet scale it can scale linearly by adding more storage devices
+- No limit to number of files to be stored
+- Single object size can be very large(5-10 terabytes) making them the best for db archive and backups
+- Expose easy http + rest api
+- Versioning out of the box
+
+Files are stored in buckets and are abstracted as objects with metadata, id and content
+Each object has access control list
+Providers have different tiers and pricing for pbject store classes with different slas like 10 nines 
+Highest tier are best for frequently accesded data middle tier for backups that are not accessed frequently and lowest tier are best for long term archiving that is rarely used.
+
+Legal, performance and Budgets may make storage stores unavailable but there are open source onpremise or third party managed solution and use same api to sccess data
+in our hybrid cloud and on premise data
+Object stores use data replication to avoid data loss
+
+- Objects are immutable
+- No easy file system like access
+- Lower io performance
+
+Cloud-Based Object Store Solutions
+Amazon S3 (Simple Storage Service) - Amazon's highly scalable cloud storage service that stores object data within buckets. Designed to store and protect any amount of data for various use cases, such as websites, cloud-native applications, backups, archiving machine learning, and analytics.
+
+GCP Cloud Storage - Google Cloud's managed service for storing unstructured data for companies of all sizes
+
+Azure Blob Storage -  Microsoft's massively scalable and secure object storage for cloud-native workloads, archives, data lakes, high-performance computing, and machine learning
+
+Alibaba Cloud OSS (Object Storage Service) - Fully managed enterprise-ready Object Storage Service to store and access any amount of data from anywhere.
+
+Open Source and Third-Party Object Store Solutions
+OpenIO - A software-defined open-source object storage solution ideal for Big Data, HPC, and AI. It is S3 compatible and can be deployed on-premises or cloud-hosted on any hardware that you choose.
+
+MinIO - High-performance, S3-compatible object storage. It is native to Kubernetes and 100% open source under GNU AGPL v3.
+
+Ceph - Open-source, reliable and scalable storage. Ceph provides a unified storage service with object, block, and file interfaces from a single cluster built from commodity hardware components.

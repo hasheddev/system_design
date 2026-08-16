@@ -1,0 +1,46 @@
+SLA: service level agreement
+an agreement between us, service provider and customer a legal contarct representing quality of service such as availability, perfromance data durability
+it states penalty and financial consequencies like full / partial refunds, subscription/license extension
+This exists for external paying user, free external users(sometimes) and occasionaly internal users rarely any penalty
+For free users this might be dues to issues when usere are using the system with free trial and compensate then with an extension or credits
+Cmmpanies that provide free sevices  do not publish slas
+
+SLIs, SLOs, and SLAs are the foundational framework used in Site Reliability Engineering (SRE) and service management to measure, track, and guarantee service performance and availability.
+
+SLO: service level objectives
+individual goals we set for our service likes
+availability service slo of 3 nines
+response time slo of less than 100ms at the 90th percentile
+issue resoluyion time objective of at most 48 hours
+
+Slos include quality attribuutes from beginning of design process and other system objective
+
+Each Slo represent an individual agreement in an sla about a specific metric in the system. An Sla aggregates all the slos in a single legal documents
+Systems with no Slas must have slos as without this users do not know what to expect from the system
+
+SLI: service level indicators 
+Quantitative measure of complaince with an slo
+An actual number measured with monitoring service or calculated from logs
+Can be compared to our slos e.g We can measure number of succefull request as sli for availability and compared to
+the availability slo of 3 nines that is set
+
+
+Slos represent taret values for quality attributes highlighting importance of measurability(findning slis to use against slos) and testability
+to prove that we meet our slos hence our sla
+
+Sla are crafted by business and legal team while engineers and architects define slos and slis
+
+Consideration
+- Do not take every measurable indicator and define an slo for it instead find metrics users care about the most and define slos around them
+then find right sli to track those
+
+- Fewer slos is better to be able to proritze them
+
+- Set realistic goals with a budget for error and commit to much lower slosthis saves cost and leaves enough room for unexpected issues
+Sometimes separate external slos are separated from internal ones like 99.9 external but 99.99 internal availability to reduce financial culpability
+
+Create recovery plan for when slis show that we are not meeting our slos
+e.g system goes down for a long period, performance degrades and we get reports about bugs in the system
+The plan should include automatic alerts to engineers, automatic rollbacks, failovers, scaling
+predefined handbooks on cituation handling
+

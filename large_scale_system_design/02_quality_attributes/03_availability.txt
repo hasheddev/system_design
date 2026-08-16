@@ -1,0 +1,25 @@
+Availability impact on a system like air control or healthcare determines its importance
+as it may affect lives
+
+System going down for too long or frequently means we lose money and users go to competitors
+
+Availability is the fraction of time/probability that our service is oeprationaly functional and accessible to the user
+
+uptime = time system is operationally fuctional and accessible to the user
+downtime = time system is unavailable to user
+availability = uptime / entire time system is running (uptime + downtime)
+availability can sometime be referred to as uptime
+
+Mtbf mean time between failure: average time system is operational useful when dealing with multiple pieces of hardware
+and are not using third party service that provide their own metrics
+
+Mttr: average time it takes to detect and recover from failure(average downtime)
+
+Availability = Mtbf + Mtbf + Mttr  this is more useful for estimation
+if mttr is zero we have 100% availability though this is not possible
+
+100% availability is not possible as it leaves no time for maintenance and upgrades
+ 90% availability = 36 day downtime per year
+Industry standard is 99.9% = 8h 45m 36s per year = 1 min 26 seconds per day
+
+99.9% = 3 nines 99.99 = four nines

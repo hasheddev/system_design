@@ -1,0 +1,42 @@
+Load balancer: balances traffic load among a group of services
+without load balancer client would be tightly coupled to a server making changes hard, it is an absrction that makes our system look like a single server with a lot
+memory and processing capablity
+
+Provides scalability
+High availability
+Performance adds a little latency but increases throughput
+Maintanability we can add or remove servers on by one without disruption like using rolling release
+
+
+Types
+DNS: domain name system maps friendly urls to ip addresss
+dns can be configures to return a list of address in different order in requests and client sus the first essentially balancing the load on the system simply and cheaply
+- It does not monitor server health and will refer client to a non functional server
+The list return changes based on configures ttl for a dns record
+List can be cached in the client's device making time request is sent to a down server longer
+- Balancing startegy is always simple round robin hence does not determine server load or capability
+- Client gets ip address of all servers exposing all servers making them less secure and vulnerable to overload from malicoius users
+
+Hardware:
+Run on dedicated devices designed and optimized specifically for load balancing
+Software:
+Programs that can run on general purpose computer and perform load balancing function
+Both communicate with one client and expose only one ip and monitor server health and intelligently balance load with server hardware, load and connection taken into account.
+They can also balance load inside our system between services allowing us to scale services independently
+Load balancere are usually co locatted with the servers to reduce latency
+
+Global server load balancer:
+Hybrid between Dns and hardware/software laod balancer. It can figure out user location and can monitor the server
+User gets address of the most close load balancer which user uses to reach nearest load balancerThey route  traffic based on multiple strategies liek traffic, cpu load of server e.t.c
+They are importance for high availability in case of disater or some server being down by routing to another location
+multipleload balancers are placed in a location to avoid single point of failure
+
+RESOURCES
+HAProxy
+HAProxy is a free and open-source, reliable, high performance TCP/HTTP load balancer.
+It is particularly suited for very high traffic web sites, and powers a significant portion of the world's most visited ones. It is considered the de-facto standard open-source load balancer, and is  shipped with most mainstream Linux distributions.
+HAProxy supports most Unix style operating systems.
+
+NGINX
+NGINX is a free, open-source, high-performance HTTP server and reverse proxy (load balancer). It is known for its high performance, stability, rich feature set and simple configuration.
+For a full tutorial on how to install, configure and use NGINX follow this link.

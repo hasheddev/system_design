@@ -1,0 +1,78 @@
+
+EVENT sourcing AI explanations and examples
+***
+Dual-Write Failure (Event Stored in DB, but Broker Publish Failed)
+What Happened: The Order Service successfully writes OrderCreated to its Event Store, but crashes before it can emit the event to the Message Broker. Downstream services (Inventory, Shipping) have no idea the order exists.
+
+What the Recovery Service Does (Outbox / Catch-Up Pattern):
+
+Scans Event Store Ledger: Continuously checks the Event Store for events marked published = false (or monitors the event stream position).
+
+Republishes Unsent Events: Picks up the orphaned OrderCreated event from the Event Store and publishes it directly to the Message Broker, waking up downstream services.
+
+
+****
+In this architecture, the Order Recovery Service acts as a Watchdog (or Process Manager). Because event-driven systems rely on asynchronous message brokers, there is always a risk that a downstream service (like Shipping) crashes, a message drops into a Dead Letter Queue (DLQ), or an external API fails silently.
+
+Without a recovery mechanism, an order could be paid for and fully audited in the Event Store, but permanently stuck in a "Processing" state, leaving the customer without their package.
+
+Here is exactly what the Order Recovery Service does to prevent this:
+
+1. Maintains an Active Order Projection (Read Model)
+It subscribes to the Event Store to track the lifecycle of every order.
+
+When it sees an OrderPaid event, it adds the order ID and timestamp to its internal "Pending Shipping" database.
+
+When it sees an OrderShipped event, it immediately deletes or marks that order as complete in its database.
+
+2. Sweeps for SLA Breaches (Timeout Monitoring)
+The service runs a continuous background worker or cron job that scans the "Pending Shipping" database for orders that have exceeded a predefined Time-To-Live (TTL). For example, it looks for any order where status = 'PENDING_SHIPPING' and updated_at < NOW() - 24 hours.
+
+3. Executes Automated Recovery Actions
+When it finds a stuck order, the service does not fulfill the order itself. Instead, it emits new commands or events to the Message Broker to force the system to self-correct. Common actions include:
+
+Republishing/Retry: Emitting a RequestShipping command to the broker again, in case the original message was lost. (Note: The Shipping service must be idempotent to handle duplicates).
+
+Triggering Compensating Transactions: If the shipping system reports the item is actually physically lost and cannot be shipped, the recovery service emits an OrderFailed event, which triggers the Billing service to automatically issue a refund.
+
+Escalating to Human Operations: If automated retries fail, it sends a high-priority alert (via the notification service) to the customer support or warehouse operations dashboard.
+
+
+***
+When a dedicated Payment Service handles the payment processing, the responsibility boundaries shift slightly—making the architecture cleaner and less prone to split-brain states.
+
+If the Order Service crashes while a payment completes, the Payment Service becomes the source of truth for payment success, and the Recovery Service acts as the bridge that repairs the missing order workflow.
+
+Payment Service Success: The Payment Service processes the charge and appends a PaymentSucceeded event to the Event Store/Message Broker.
+
+Standard Path: Under normal operation, the Order Service receives PaymentSucceeded and updates the order status to PAID, triggering the RequestShipping command.
+
+Failure Path: If the Order Service is dead or down, the PaymentSucceeded event sits unconsumed or gets abandoned by the Order Service subscriber.
+
+How the Order Recovery Service Works in This Setup
+The Recovery Service sits as an independent listener on the Message Broker/Event Store and monitors state transitions over time.
+
+It works using a Timer/SLA Window (Outbox / State Reconciliation Pattern):
+
+1. Tracking Pending Payments
+When the Payment Service publishes PaymentSucceeded { orderId: "123", paymentId: "pay_abc" }:
+
+The Recovery Service captures this event and opens a 15-minute tracking lease for orderId: "123".
+
+2. Waiting for Downstream Confirmation
+Under normal conditions, the Order Service processes PaymentSucceeded and emits OrderPaid or ShippingRequested.
+
+When the Recovery Service sees the ShippingRequested or OrderPaid event, it cancels the timer for orderId: "123". Everything worked normally.
+
+3. Detecting the Order Service Failure
+If the timer reaches 15 minutes and the Recovery Service never saw an OrderPaid or ShippingRequested event for orderId: "123":
+
+The Diagnosis: Payment succeeded, but the Order Service failed to process it or crash-looped before publishing the next state.
+
+Step-by-Step Recovery Actions
+When an unfulfilled paid order is detected, the Recovery Service takes over using one of two approaches:
+Method 1: Direct Event Injection (Event-Sourced Standard)
+The Recovery Service directly appends a PaymentReconciledByRecovery event to the Event Store and publishes a RequestShipping message directly to the Message Broker, bypassing the dead Order Service entirely.
+
+Method 2: Synthetic Replay
+The Recovery Service republishes the original PaymentSucceeded message onto a specialized orders.retry topic once the Order Service comes back online, forcing the Order Service to process the backlog.

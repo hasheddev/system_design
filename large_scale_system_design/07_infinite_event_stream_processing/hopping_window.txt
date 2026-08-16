@@ -1,0 +1,20 @@
+Tumbling window may not cover enough event to produce for low volume events to produce meaningful period and if window is long we get more insights but we get insight maybe after it is too late
+
+We use hopping windows to increase frequency of results and get insights over long windows as it is similar to tumbling window with fixed time window but windows overlap and are separated by the advanced interval a time duration
+that may be smaller, equal or larger than the time window, if advanced interval is equal to window duration we are back to the tumbling window.
+It is useful when advanced interval is smaller that the window duration with windows overlapping
+We get trand analysis with frequent updates as events overlap
+
+Used for near real time analytics for ui  dashboard like stock trading
+
+Pros
+Results are much more frequent
+Great for uis, dahsboards for monitoring
+Allows us to respond to changes/insights faster and sooner
+
+Cons
+Aggregateing event in memory consumes more memory and cpu resources and repeat processing of same event
+We consume more network resources and more storage
+
+Larger advanced interval reverts to something similar to tumbling window stratagy with gaps betweenwindow and is useful for when event volume is large but has low variability
+that doe not change often or we do not need to process them often

@@ -1,0 +1,31 @@
+CAP theorem intoduced by Professor Eric Brewer
+
+states in the presence of a netwrok partition a distributed database cannot guarantee both consistency and availability and has to choose only one
+This is only when there is a network partitioning else we can provide both
+
+consistency: every read request receives most recent writes or an error, value of most recent write is returned so all client see same value at same time regardless of instace
+
+availability: non error response without guarantee that it is the most recent write different clients ocassionally get different versions with some stale but get valid values
+
+Partiton tolerance: system operates despite an arbitrary number of messages being lost or delayed by network between different computers
+
+When we choose or configure a database we can drop one of the above
+
+CA - no partition tolerance
+CP - no availability
+AP - No consistency
+
+CP: "If the network breaks, stop answering to prevent corrupted state."
+
+AP: "If the network breaks, keep answering even if the data might be stale."
+
+CA: "The network will never break." (Works on a single database server; impossible across a distributed network).
+
+Centralized database cannot scale and provide fault tolerance but can avoid network Partiton
+Using distributed system means choosing partition tolerance and having to drop availability or consistency
+
+Prefer consistency when the data is criticallike account, inventory but for likes, views e.t.c choose availability
+
+We do not have to choose 100% consistency and no availability and vice versa we can decide when configuring database based on our needs
+
+The CAP theorem is an example of making tradeoffs based on the qualities of our system

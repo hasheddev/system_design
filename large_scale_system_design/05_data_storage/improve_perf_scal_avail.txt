@@ -1,0 +1,22 @@
+Indexing
+Improved query performance preventing full table scan for frequent queries or large tables
+Index is a table containing mapping of value to record that contains the value and we can use hashmap or btree
+Indexes can be formed from one or more columns
+Writes become slower, indexing is also used in nosql databases
+
+Replication multiple copies with same data
+Replication reduces load on db and provides high availability in case some replicas go down and gives more throughput
+This leads to more complex writes, updates and deletes making sure no conflict and consistency and correctness are ensured.
+It leads to difficult design configuration and management and requires competency in distributed systems.
+It is suppoted by all modern dbs and the nosql dbs integrate it out of the box
+
+Partitioning
+Split data among different databases and run on different databases and queries can be performed in paralled giving betetr performance and scalability
+This turns database to distributed database with overhead in routing writes and size maintenance
+It is a first class feature in all nosql dbs as they by design decouple different records making it more natural and easier
+Not as common in relational databases as queries involving multiple records are common and spreading data across multiple machines is challenging to implement
+while supporting joins and acid. When using relational database for high volume we need to ensure partitioning is well supported.
+X=Can also be used to split our infrastucture logically like traffic from mobile to  system and another for customers on performance
+
+
+All are orthogonal and commonly used together in most real life large scale systems

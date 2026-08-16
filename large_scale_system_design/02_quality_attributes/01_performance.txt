@@ -1,0 +1,16 @@
+Software performance refers to how fast, stable, and responsive a program runs using computer resources
+
+Response time between request and Response (end to end latency)
+processing time + waiting time (time response spends inactively in system) like network, queues also known as latency
+It is important whne the request is in the critical path of a user interactions but is is not the ultimate performance metic
+
+For a logging system response time is not the most important not the ability to ingest and process a large amount of data is(throughput)
+Amount of work performed by system per unit of time measured in tasks/second
+Amount of data processed per unit of time  bits/bytes/mbytes per sec
+
+If only time spent in code is measured and waiting time is not we get a wrong measuring graph
+Response time distribution across different servers also affects response time the metrics used is bysorting samples and creating a histogram then create a percentile table
+we use x percentile to get % of total request and see the tail latency(the samll percentage of response times from a system that takes longer in comparison to the rest of values)
+We define response time goals using percentile e.g 95th percentile less than 30ms and measure the percentile
+
+Degradation is the point at which the performance gets significantly worse as load increases e.g cpu overutilization due to load, too many i/o connections, queue capacity full e.t.c

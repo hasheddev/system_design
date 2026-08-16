@@ -1,0 +1,29 @@
+Batch processing
+Stores data in a distributed file system or database. Data is not mdified but more is appended as they arrive
+Data is then processed in groups of records on a fixed schedule or based on fixed number of records like hours, minutes, days
+We manage the processing logic that uses latest data and produces an updated view of all current data in an indexed data to get insight about entire data set or a subset of dataset
+e.g learning platform reviews, and other user events like progress we may process in batches and take into account previous history and use content consumption to determine instructor compensation, rating
+for average rating or fuse data and weight revies from students what watched most to those that barely watched the course. Rank courses based on rating and overall engagement, use the combination for a model to predict
+students that may benefit from courses and recommend it to them.
+Search engine services crawl data set periodically and index organize in a way that is easy to search for and because crawling takes a long of time and new infor is not expected to be in every search we can use batch processing
+
+Pros
+- Easy to implement as there is no latency
+- High availability as before current batch is processed old data view is available
+- Efficiency in data processing
+- Higher fault tolerance towards human error as we still have original data to use while we fix the error
+- Complex and deep analysis o flarge datasets that can span years
+
+Cons
+- Long delay between incoming data and result from processing job
+We do not get real time view delaying response to platform events and trends
+- User have to wait a while before getting feedback on actions e.g new updates not showing in search results
+- Logs and metric analysis need to be ingested and visualized realtime for immediate actions and also online stock systems need to be realtime
+
+Realtime processing
+We put new event is a queue and process data as they come after process we update database for query
+Pros
+- Analyze and response are immediate
+Cons
+- Hard to do complex analysis in real time
+- Data fusion or analyzing historic data is impossible

@@ -1,0 +1,45 @@
+Popular in mid 2000s to solve schema inflexibility of sql that needs change to table for a subset of records
+Allows us to group records without a strict schema
+Npn relational db support more that tabular storage for programming languages and do not store data in table eliminating need for orms
+to ttrannslate table to objects
+
+Advantages
+They are designed for efficient storage and faster queries
+
+Tradeoffs
+We do no have the ability to easily analyze records and multiple groups of record with joins are limited or not supported hence hard
+Acid transactions are rarely supported
+
+Categories boundary are blurry and a db migh appear under different category by different sources
+Document
+Collection of document with more structure each document is an object with different attributes and types
+Can be more easily mapped to objects in a programming language e.g JSON, XML, YAML
+
+Key value store  value can be anything it is like a large scale dictionary with little constraint for values. They are great for counter that multiple services access and
+caching values
+
+Graph
+An extension of of document with additional capabilities to link, traverse and analyze multiple records efficiently
+Optimized for navigating and analyzing relationships between different records
+Used for fraud detection where logical users identified as same persion tries to initialte multiple transactions using same email/computer
+Recommendation engines: for new products based on past purchase of user or friends
+
+When to use
+When query speed is needed for caching or reads
+Handle real time big data as relational db are too slow or not scalable enough use document
+When data is not structured e.g user profiles, content management
+
+Non-Relational Databases - Solutions
+
+Key/Value Stores Examples
+Redis
+Aerospike
+Amazon DynamoDB
+
+Document Store Examples
+Cassandra
+MongoDB
+
+Graph Databases Examples
+Amazon Neptune
+NEO4J

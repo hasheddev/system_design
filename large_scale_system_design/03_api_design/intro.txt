@@ -1,0 +1,35 @@
+Api are interfaces that serve as a contract between applications on how they interact
+It is set of rules and protocols that allows different software applications to communicate and exchange data with each other
+
+Each component has its api
+
+Categories:
+- public
+any application can call them but a good practice is requiring registeration before allowing access for better control over users,
+howmsystem is used, security and blacklist malicious users
+- private
+onlu internally within the company, it allows other teams to take advantage, provide better value for the company and keeps the system internal to the company
+- partner
+exposed only to companies or users having business relationship with the company, business may be in the form of purchase of product, subscription.
+This allows for abstraction  whith immediate benefit for client and without waiting for full api implementation.
+api makes it easier to design and archtect the internal structure of our system as it defines enpoints to routes in our system
+
+
+
+Best practice
+- Complete encapsulation of design and implementation it wuld be bad if knowledge of business logic or implementatio to use it.
+We want our api to be complelety decoupled from implementation/design
+- Easy to use, understand and impossible to misuse accidentally or intentionally
+This can be achived by making only one way to get certain data / perform a task
+Descriptive name for action/resource
+Exposing only necessary information and action
+Consistency across the api
+- Idempotent operation (having no same on the result if performed multiple times)
+This is wanted because of network decoupling
+- Pagination used in case of large payload
+This enables clients to handle the data
+- Asynchronous operation where client recieves response immediately with an identifier to track operation progress
+used in case of big data operation
+video compression
+- Versioning
+This allows us to make changes to design and implementation in case of non backward compatible updates

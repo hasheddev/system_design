@@ -1,0 +1,72 @@
+- Questions to capture functional, non functional and system constaints
+- API system definiton
+- Software architecture diagram to fulfill functional requirements
+- Refine software architecture diagram to address the non functional requirements
+
+No one correct way to solve a problem make tradeoffs based on requirements
+
+Scalable public discussion forum like reddit, quora, stack overflow
+Post creation
+Comment on Post
+Upvote, downvote posts/comments
+Post feed
+
+Questions
+- can anyone post or view posts/comments = sing up and login required
+- waht can a post constaints = tile topic tags, body of text and image
+- How is popular defined
+- Comment structure = on any existing post and chronologically ordered as a flat list
+- User can delete their own post or comment
+- logged in user to upvote/downvote a comment / post
+- Most popular posts in last 24 hours as total number of (upvotes - downvotes)
+
+Non functional
+- Scalable(millions of users)
+- Performance less than 500 ms
+- Fault tolerant/high availability is 99.9%
+- Availability + partiton tolerance Ap over CP
+- Durability
+
+API
+rest api over http
+Identify entities
+Map entities to uris
+Defining resource representations
+Assigning http methods to operations on resource
+
+users, posts, images, comments, votes
+
+users and posts are independents, comments and images are sub resource of post, vote subresource of a post or comment
+
+Post is used in login to avoid password in url and is also a request to create session/token
+
+
+Architecture 
+Web service to serve pages
+
+- User service with db that stores user data and signup and login
+- Post service nosql Blob store to store image where request is sent directly to it
+delete post deletes post
+- comment service or post service we combine post wth comment to keep it simple
+- Vote service
+- CQRS to pull data from post and votes services to a ranking service that stores post in a sorted way we sort a small number of posts, recalculating and ranking post
+is expensive and we use batch processing as there is no stric requirement of all time accuracy, ranking service runs 10 20, 20 min requesting new votes in last 24  hour sum up upvotes and downvotes sort them then
+request for post data from post service
+
+Non functional requirements
+
+Scalability: load balance in web service and all other services
+Api gateway to decouple frontend from other services
+sharding posts and comments  we shard by post id hash, shard comments by post id but to avoid too may comments and request to same shard
+we shard comment based on postid and comment id(compund index) and use range sharding to make sure posts of same comment end up in similar dbs
+
+Perfromance:  use cdn for images using pull with long ttl, static html can also be sent to cdn
+Cache small posts viewed by multiple users
+add index on post id  and compund index
+for total upvotes/downvotes use broker to update post and comment to update fields
+
+Fault tolerance: Replicate database, datastore, message broker and microservice. Run system acrosee multipe regions with global load balancer
+
+Availability by configuring db to be available and also caches
+
+Durability from database replication and periodic backups

@@ -1,0 +1,38 @@
+Motivation
+Most important for asynchronous communication
+Synchronous communication assumes live connection and health between devices to complete  transaction which would lead to reatsrt if server crashes and also hold user
+It also has no space to absorb sudden increase in traffic or load
+
+Benefits
+Message broker uses queue data structure to store messages between senders and receivers and is used internally within a system unexposed externally
+It stores temporarily, validates, transforms and load balances messages
+It decouples senders from receivers and sender does not wait for confirmation to recierver and client may get confirmation immediately while receiver might not necessarily be available.
+It stores messages to avoid traffic spike
+Offers publisher subscriber pattern allowing multiple service to consume the message without modifying the system
+
+Attributes added to system
+Adds fault tolerance to system
+Makes communication possible even if some services are temporarily unavailable
+Prevents message from being lost
+
+Providing Avilability and Scalability(through buffer of messages) and allows for high traffic with no modification but adds latency
+
+
+Message Brokers Solutions & Cloud Technologies
+Open Source Message Brokers
+Apache Kafka - The most popular open-source message broker nowadays. Apache Kafka is a distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
+
+RabbitMQ - A widely deployed open-source message broker. It is used worldwide at small startups and large enterprises.
+
+Cloud Based Message Brokers
+Amazon Simple Queue Service (SQS) - Fully managed message queuing service that enables you to decouple and scale micro-services, distributed systems, and serverless applications.
+
+GCP Pub/Sub and Cloud Tasks - Publisher/Subscriber and message queue solutions offered by Google Cloud Platform. See this article for comparison between the two offerings.
+
+Microsoft Azure:
+
+Service Bus - Fully managed enterprise message broker with message queues and publish-subscribe topics.
+
+Event Hubs - Fully managed real-time data ingestion service. Allows streaming millions of events per second from any source. Integrates seamlessly with Apache Kafka clients without any code changes. A perfect solution for Big Data.
+
+Event Grid - Reliable, serverless event delivery system at a massive scale. It uses the publish-subscribe model. It is Dynamically scalable, Low cost with a pay-as-you-go model, and guarantees "At least once delivery of an event"

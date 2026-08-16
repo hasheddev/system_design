@@ -1,0 +1,18 @@
+Big data processing
+Big data refers to data that come to our system at a high rate or are too large or complex in structure that exceeds the capacity of any traditional system to process it to provide any value
+
+Characteristics prominent
+- Volume: data quantity to precess, store and analyze in magnitues of terabytes, petabytes or greater per day
+A few apps where we get this is internet search engine that analyze entire internet, patient health analysis that analyze and store patient and hospital data to prevent or detect diseases, realtime security
+systems that analyze multiple feeds from cameras in neighbourhoods, cities, streets e.t.c to combat time, weather prediction system that get data from large satellite from large regions to predict weather
+- Variety: non big data work with well defined types but big data works with a large variety of potentialy unstructured data from multiple sources and we use data fusion to combine the data to find hidden patterns and insights
+for our org e.g social medial apps that collect real time user behaviour like clicks, likes, shares, hover time, video watch duration, post to predict user behaviour prediction model for ads reception, internet trends or clusters of interests
+- Velocity: we have a continuns stream that comes at a large rage due to system being large or frequency of user events e.g large ecommerce have large events dues to large number of users while IOT devices due to frequency of events like buses or robots small
+but together.
+
+Storing and processing is complex and expensive but benefit anc insights can provide significant advantage over competitors in the form of
+Visualizations, Querying capabilities and predictive analysis
+- Visualization: allows making sense of meaningless data stored in some file system or db
+- Querying capabilities allows us to run ad-hoc analysis on data to find insights/patterns that were not obvious before
+- Predeictive: Build algoriths or machine leaning models to predict user behaviour or suggest products they are likely  to purchase
+or detect anomalies in the system by analysing logs to alert engineers

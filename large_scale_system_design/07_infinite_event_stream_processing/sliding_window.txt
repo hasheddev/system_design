@@ -1,0 +1,20 @@
+A hopping window might not detect trends if the advance time is not small enough and a tumbling window might miss the event but using very small interval for hopping window might cost money when there might be no activity in some windows so the sliding window is used
+
+Each window is of fixed duration but advance interval is dynamic and event related instead of fixed time is great for irregular timed events with fewer windows for fewer events
+
+Is is good for api rate limiting say an event is emitted when a request arrives and a sliding window is used to aggregate event by origin
+
+In a true sliding window, you only define a Window Size (e.g., 10 minutes). There is no "hop interval" parameter. Instead, the window slides continuously with every incoming record.
+
+A new evaluation happens only when an event arrives or when an old event expires out of the 10-minute range.
+If events arrive at 12:01:05 and 12:07:42, the window only evaluates at those exact moments.
+Event 1 at 12:01:05 -> Evaluates Window: [11:51:05 - 12:01:05]
+Event 2 at 12:07:42 -> Evaluates Window: [11:57:42 - 12:07:42]
+
+
+Pros
+Excellent for real time monitoring and pattern detection
+Flexible interval that is as small as possible
+
+Cons
+Costs more than hopping and tumbling window when there are a lot of events window count = event count
