@@ -1,0 +1,36 @@
+Full team autonomy problems
+Misconception/Myth is biggest benefit is each team has full autonomy in choosing tech stack, dbs, frameworks e.t.c this is due to
+Upfront cost of infrastructure: amount of effort put nto structuring monolith cannot be put into all microservices
+Infrastructure maintenance: Ongoing effort to maintain infrastructure becomes steeper and overwhelming for different service technologies
+Steep learning curve: new developer take a lot of time to follow a microservice codebase best practice which may vary for different service making it un scalable
+Non uniform api: different communication apis makes frontend and service to service communication a nightmare if different ones are used(learning each api technology)
+and different team best practices
+
+For a successful microservices architecture we need balance between autonomy and structure(Structured autonomy)
+Each team is autonomous within certain boundaries
+
+3 tiers of development team autonomy
+
+Tier 1 fully restrictive, should be uniform across company e.g
+- CI/CD monitoring and alerting making investing time in building this worth it
+and cost effective.
+-Api guidelines and best practices should be uniform making integration easy
+- Security and data compliance as system becomes vulnerable if a service is hacked. Violation of a data policy applies to whole org and not
+just the microservice
+
+Tier 2 Freedom with boundaries: programming languages and database technologies as it prevents use of newest technology just for fun and also it takes time to
+develop expertise in managing, configuring and running runtimes and dbs in production. Most large companies have a limited number of db technology and languages
+used across hundreds of services
+
+Tier 3 Complete autonomy: Includes 
+- release process, schedule and frequency so each team can work independently based on their own conditions and customize based on need.
+- Documentation
+- Custom scripts for local development and testing
+- Onboarding process
+
+These tiers are general guidelines
+
+Factors in team autonomy boundary
+Size / influence Devops /SRE team
+Seniority of developers the more senior the more freedom they prefer
+Company culture

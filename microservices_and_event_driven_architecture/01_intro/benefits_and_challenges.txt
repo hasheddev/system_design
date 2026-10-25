@@ -1,0 +1,25 @@
+Introduction Benefits and Challenges of Microservices architecture
+
+Microservices architecture organizes a system as loosely coupled services each owned by a small team and with a narrow scope of responsibility
+
+
+Benefits
+High organization scalability with smaller code base that is quick to load in IDE, easy to reason about, fast to build and test, safer to deploy with smaller and more frequent releases
+and speeds up engineer onboarding
+
+High system scalability: Unlike powerful machines needed for monolithic apps microservices consume smaller memory and thus run on cheaper machines and it also allows for teams to use the best
+technology for the services while responding to technology changes
+
+High system stability: Impacts on services are isolated to related services
+
+
+Challenges
+Microservices is  a highly distributed system making method calls more unpredictable dues to network communication and each service being unreliable
+
+Testing microservices in isolation is faster but there is no guarantee that they work as a whole leading to slower and complex integration test with blurry ownership
+
+Troubleshooting performance issue and bugs becomes harder
+
+Responsibility boundary becomes harder from organization scalability
+
+These issues can lead to worse situation known as a distributed monolith but there is now established principles and best practices to avoid this.

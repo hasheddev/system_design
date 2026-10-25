@@ -1,0 +1,35 @@
+Motivation for Microservices
+• Independent Deployability: Teams can update, test, and deploy individual services without rebuilding or releasing the entire application.
+• Data and Fault Isolation: Crashing or overloading one service (such as a recommendation engine) does not take down unrelated domains (such as checkout or authentication).
+• Targeted Scaling: High-load components can be scaled horizontally and independently, optimizing cloud infrastructure and costs.
+
+Microservices architecture is the most modern and popular style in the industry where a system is organized as a collection of independent services,
+each with its own scope of responsibility and fully owned by a dev team. Most successful companies use this architecture and is considered one of the
+biggest contributors to their success. When done correctly allows organizations to scale to thousands or tens of thousands engineers divides into small
+teams that operate independently, enabling building of systems that serve millions of users while keeping operational cost lows and stay efficient and
+innovative.
+
+Challenges
+This architecture is beneficial under the right conditions when applied correctly or it will introduce a lot of unnecessary overhead with no benefits.
+
+Motivation for event driven
+Commonly used with microservice architecture to achieve even greater decoupling
+• Eliminating Synchronous Bottlenecks: Instead of making blocking, chain-reaction REST or RPC calls where a slow downstream dependency halts the entire request, services emit non-blocking notification events.
+• Loose Coupling: Producers only publish that an occurrence happened (e.g., OrderPlaced) without knowing or caring which services consume it or how they process it.
+• Asynchronous Fan-Out: A single business event can simultaneously trigger multiple independent reactions—such as updating inventory, running fraud detection, and sending a confirmation email—without extra overhead for the sender.
+• Resilience and Reliability: Using message brokers like Apache Kafka or RabbitMQ allows events to be buffered if a consumer goes offline, and replayed later to recover state or debug issues.
+
+Problems solved with both architectures
+
+We divide typical web based apps into three tiers
+- Presentation
+- Application layer(business logic)
+- Data layer(Db, files)
+
+This is usually the most commonly used and is called a monolithic architecture. It fits most web based system
+It is easy to implement and design and is perfect for small startups and small teams (JB uses two pizza rule team small enough to be fed with 2 pizzas)
+however as the company becomes bigger and more successful we run into issues like
+- Low organizational scalability as code merge conflict becomes and issue
+    - Complex code base that takes longer to load in IDE hard to reason about, slow to build and test, risky to deploy with larger and less frequent releases
+    - New developer takes more time to get used to the code base
+- Low system scalability technical problems makes system costly and limits technology usage with less stable app with tight coupling

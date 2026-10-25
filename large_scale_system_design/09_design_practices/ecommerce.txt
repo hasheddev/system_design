@@ -7,7 +7,7 @@ Questions
 Merchant: digital product or physical
 product information from merchant
 data provided to merchant
-operations merchant can perfrom
+operations merchant can perform
 
 Buyer: can anyone browse and purchaser or only registered
 search capability type
@@ -24,8 +24,8 @@ title, description, categories, images, optional attributes
 - Analytics: view visitors, projected product Performance
 
 For  users
-- store front to broswe and search based on title, category, description
-no registeration or review necessary
+- store front to browse and search based on title, category, description
+no registration or review necessary
 - Checkout page to view tax and bill breakdown, click to purchase and receive email  about order
 shopping cart is client side, payment is third party
 email and notifications at stages of purchase
@@ -48,7 +48,7 @@ Merchants
 product management service service provides ui for merchants to register and login with a sql database
 product service for product update, edit, delete with its own db nosql
 images in object store
-inventory service stores inventory for product ina key value store
+inventory service stores inventory for product in a key value store
 
 
 User
@@ -65,7 +65,7 @@ any time product is viewed product search send an event to broker, so will order
 and consume
 
 store checkout
-- taxes servive that stores tax related data and calculates tax and sources data from products service
+- tax service that stores tax related data and calculates tax and sources data from products service
 it uses user location and other data to calculate tax
 - order service gets user billing and shipping info, send user confirmation after inventory confirmation to order service, billing and shipping async one after the other. We update user asynchronously about shipping or payment issue
 after the fact via push notification

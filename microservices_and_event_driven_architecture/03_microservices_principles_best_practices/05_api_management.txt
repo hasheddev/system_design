@@ -1,0 +1,21 @@
+Problem
+A healthcare company providing service to different devices like smartwatch, servers, computers, mobiles and with hundreds of microservices
+- Lead to a problem of hardcoding many microservice endpoint into frontend client sdks coupling api endpoint to client side code e.g breaking down a microservice
+requires refactoring all client side code in each devices
+- Exposing different apis to different clients like developer private endpoints, client public endpoints, partner private endpoints
+- Different API tiers based on subscription level
+- Traffic control and monitoring due to different api endpoints tracking becomes harder
+- Code duplication for authorization and rate limiting across services
+
+API gateway pattern
+An entry point responsible for api management is used to route request to relevant microservice, transform data for request and response for clients,
+traffic throttling and management, authorization, monitoring, fanning out request and aggregating response
+
+Load balancer vs API Gateway
+Both route request to a single destination
+A load balancer balances traffic loads on a group of servers running identical copies of each app. In microservice we place a load balancer
+in front of microservice each deployed as a group of identical instances
+API gateway serve as public facing interface it routes request to services based on criterias
+
+Load balancer is simple as possible and performs health checks with different algorithms
+API gateway provides many other features hence is sued together with load balancer

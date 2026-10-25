@@ -1,0 +1,34 @@
+** Where to start
+
+*Big bang approach: map out microservice boundary, stop any development of new features
+Seems like a good idea but in reality is the worst as
+- too many cooks in the kitchen as we want to migrate because our devs are having communication issues
+- Hard to estimate the effort for large and ambiguous projects and we might encounter unexpected technical problems that costs more time and effort
+- High risk abandonment if too many time passes and the migration is not complete to minimize loss
+- Stopping new feature development for many month is detrimental as product manager and sales people have nothing new to sell and pitch, unable to be promoted
+and may leave the company while clients may think business or company is in trouble or unwilling to improve user experience
+
+* Incremental and continuous: Identify components that benefits the most using:
+- Areas with most development/frequent changes this gives most value and is the biggest source of merge conflict and release of entire app
+- Components that have high scalability requirements
+- Components with little technical debt and good logical separation that fits scope of microservice
+We continue to look for these conditions and create microservices until no more change is required based on the conditions
+
+Benefits
+- No hard deadline necessary
+- Consistent, visible and measurable progress
+- Business is not disrupted
+- Exceeding estimates is not a problem
+
+** Preparation
+Add/ensure code test coverage
+Define component API for microservice
+Isolate component by removing any interdependency to the rest of the app e.g shared db, global state
+
+** Execute migration using the Strangler Fig Pattern
+- Introduce proxy in front of monolith called strangler facade using an api gateway and on microservice readiness route traffic to it from gateway,
+if no issues is found remove old component from monolith then repeat until we have an empty old app or a legacy app to support old client
+
+** Tip for smooth migration
+- Using newer technology and languages is not the best approach keep them unchanged as much as possible as every additional change is a potential source of bugs and risks
+We mitigate this by refactoring when the microservice is stable

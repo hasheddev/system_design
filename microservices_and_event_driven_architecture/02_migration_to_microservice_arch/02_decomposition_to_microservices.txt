@@ -1,0 +1,33 @@
+- Decomposition by business
+Observe and analyze core capabilities that provide value to business and customers e.g revenue, marketing, customer experience
+then dedicate a microservice and team to it
+Run a though experiment that describes what the system does and what value each capability provides to a non-technical person e.g
+Online store: browse product, view product details, read reviews, add product to cart, ship product, update product inventory
+giving the products service, shipping, web app, orders, reviews and inventory services. From the names we know that the services do only one thing
+and they are cohesive, loosely coupled. Review user journey to verify coupling as viewing store is fulfilled by web app service
+
+- Decomposition by domain/subdomain
+We use the developers point of view and use subdomain defined as a sphere of knowledge, influence or capability. Types are
+1 core - key differentiator of business from competitor cannot be outsourced  and business has no value without it
+2 Supporting - integral in delivering the core capabilities and is not necessarily different from competitors
+3 Generic - Not specific to any business and can be bought off the shelf in many cases
+The categorization helps prioritize investment into each subdomain, allocate engineers by experience and save time with existing solution
+
+In an online store the *core* is the products catalog
+supporting is the orders, inventory and shipping
+Generic are reviews, payment, search, images, image compression, security, web ui
+
+We can dedicate a microservice to each subdomain or group several into one microservice and if it makes sense to separate them we can do that
+
+*** Other methods Decomposition by Action, Decomposition by entity
+
+Decomposition by business vs domain/subdomain
+
+- Cohesion and loose coupling   By business wins
+- Size of microservice  By domain wins
+- Stability of the design   By business wins
+- Intuitive for engineers   By Subdomain wins
+
+There is no one right way to set boundaries what works now may not in the future and they may change as features are added
+No perfect decomposition as there will be some coupling and friction
+Techniques are guidelines but not bullet proof

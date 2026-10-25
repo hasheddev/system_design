@@ -24,7 +24,7 @@ This can be achived by making only one way to get certain data / perform a task
 Descriptive name for action/resource
 Exposing only necessary information and action
 Consistency across the api
-- Idempotent operation (having no same on the result if performed multiple times)
+- Idempotent operation (having same result if performed multiple times)
 This is wanted because of network decoupling
 - Pagination used in case of large payload
 This enables clients to handle the data

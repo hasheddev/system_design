@@ -1,0 +1,15 @@
+Motivation fro DB per microservice
+Insurance company with three tier architecture migrates and has claims service, customers service, reporting service, policy purchasing service e.t.c
+While it seems to make sense to use same database as a reporting service needs to access policies table, claims and customers table for efficient request
+However a service that gets a lot of request might be migrated by the team to another technology and because the reporting table must also make a change due
+to this change, similarly renaming or changes to tables needs to change in both teams and release simultaneously
+This tightly couples the team and negatively impacts productivity
+
+Benefits
+Each microservice team own their own data and when data is required by a service an api is used and we can version the api to allow for other consumers to update to
+the new api version in weeks/months
+
+Downside
+Added latency and when this becomes an issue we cache or store the data in a consumer but the source of truth must be the data owner and we accept eventual consistency
+Loss of data join from multiple table and we have to do this programmatically
+Loss of transactional guarantee for multiple changes in different tables

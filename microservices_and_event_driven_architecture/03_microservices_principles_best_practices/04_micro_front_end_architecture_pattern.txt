@@ -1,0 +1,30 @@
+Problems of monolithic frontend
+If there is only one frontend team when a backend microservice team makes changes they have to coordinate with the frontend team same for other service teams
+This creates a dependency on the frontend team for all backend teams becoming a bottleneck
+Frontend developers have to be familiar with backend services and domain and constantly develop expertise in various subdomains to make effective changes constraining
+and tightly coupling frontend and backend. 
+Frontend code becomes larger with code base takes longer to test and comprehend and new features need the frontend to be redeployed
+
+Micro frontend
+Frontend are split into modules that act as independent single page apps based on domains each page may become a micro frontend and multiple micro frontends may be
+visible on the same page and they should know how to load, mount and unmount. Each may be loaded as a separate app for testing in the browser and is owned by a team with
+full stack capability. All micro frontends are assembled by a container runtime application whose role is to render common headers, footers and take care of common functionalities
+and inform each frontend when and where to render
+
+Micro frontend is not a framework or service many frameworks support it
+Micro frontend is not a reusable ui element it is a single page app with limited functionality
+
+Example
+Web app service returns container app to user sending homepage and user logs in, it then renders header and footer it then calls entrypoint for
+course discovery micro frontend and recommendation microfrontend which will make request to the relevant backend requests and render appropriate content
+as container app requested. Similarly navigating to profile unmounts the mounted microfrontends and mounts the new microfrontend
+
+Benefits and best practices
+Smaller manageable code bases
+Full stack ownership of each microfrontend
+Easier/faster to test in isolation
+Separate CI/CD pipelines allowing for flexible feature addition
+
+Microfrontends are loaded at runtime and not buildtime dependencies to avoid monolithic frontend
+No shared state in the browser similar to sharing database
+Intercommunication through events, callbacks or browser address dar

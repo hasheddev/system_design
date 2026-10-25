@@ -1,0 +1,38 @@
+Just breaking a large code base and handing them to teams will not necessarily benefit us
+
+An e-commerce web app monolithic with presentation layer, application layer, database and external payment service integration
+The code base has grown too large and complex and the binary size requires expensive hardware
+The development team has grown past the two pizza rule
+
+** Attempt one we split based on on layers
+frontend
+application
+database layer
+This gives no benefit as every microservice will require change for every feature and gives no scalability benefit
+
+So we use principles like
+1- Cohesion: elements that are tightly related to each other and change together should stay together. The logic that changes together stays within the boundaries
+  of the same microservices so each team can work independently
+
+** Attempt two split based on technology
+Split a part of the store front to nodejs for less code and java for more performance
+Recommendation engine written in c++ and part in python for machine learning
+External payment in go for performance and code line reduction
+This improves performance but we do not kno which sub team/service gets the task
+The last  microservice still has too much responsibility and is too breaking
+
+2- Single responsibility principe: Every microservice should do only one thing and do it exceptionally well so that there is no ambiguity
+where new functionality needs to go and which team owns what
+Creates easy to follow api with terminology bound to a context
+
+
+** Attempt three split based micro in microservice assuming tiny services gives best benefits
+Split package or class nto microservices
+We have bad performance and trouble shooting becomes impossible
+tightly coupled parts
+
+3- Loose coupling with little to no dependency and little communication with other microservices
+Size is not important hence the term microservice can be misleading
+
+As long as microservices are Cohesive, Follow SRP and are loosely coupled size does not matter
+Some will be smaller/larger than others

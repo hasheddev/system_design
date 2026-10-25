@@ -1,0 +1,32 @@
+DRY principle
+Don't repeat yourself, consolidate logic or data in methods, class, variables or use shared library
+This reduces duplicate effort, changes happen in one place and reusability is enable
+It does not always hold true in microservices
+
+Challenges
+It causes tight coupling
+Every changes requires rebuild, retest and redeploy
+Bug/vulnerability in shared library impacts all microservices
+Dependency hell as we either make changes to code to accommodate different version or violate DRY principle when using multiple versions of a library
+in increases build time and binary size
+
+Alternatives
+- Incorrect boundary might cause shared business logic and we can adjust the boundary of one microservice to contain this logic or make the shared logic
+a microservice if it is complex enough
+
+- Common data model for communication having shared library/files is a good practice in this case
+We may want to have code sharing(Avoid) as when not sharing copies may change to become incompatible making communication impossible and we find this in prod
+Using code generation tools to generate data models for communication and is part of the build and test process this is fine
+
+Utility codes that change frequently should be duplicated for optimized implementation per microservice and ease of service migration
+
+No code duplication options
+* Package and deploy common code as a sidecar process running as a service run on same host for smaller overhead as they run on same host
+* Use shared library that do not lead to dependency hell that are self contained/independent of other libraries as a last resort
+
+Follow DRY in microservice code base
+
+Data duplication
+For performance improvement we cache or duplicate data as long as
+There is a clear owner(write/update/delete) in owner only as source of truth
+USe when eventual consistency is acceptable e.g caching reviews in product service is acceptable but inventory/balance must not be cached
