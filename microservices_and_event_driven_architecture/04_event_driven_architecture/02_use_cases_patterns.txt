@@ -1,0 +1,29 @@
+Use cases
+- Fire and forget actions where sender does not expect data immediately or not at all e.g generate a report as response is sent to email,
+submitting a review, user expects no response
+- Reliable delivery: we cannot afford to lose data mid transport or delivery must be guaranteed e.g product order we must fulfil order or tell them why it fail,
+we must not loose user order. Money transfer requires reliability
+- Infinite steams of data: location data, sensor of IOT cleaners, we need to analyze, transform, aggregate
+- Pattern recognition
+- Broadcasting: State change need to be made known
+- Buffering: to tolerate sudden traffic spike e.g social media with massive posts or comment
+
+Request response model use cases
+- Immediate data is needed e,g product catalogue
+- Simple interaction
+
+A typical microservices architecture combines event driven architecture with synchronous request response model
+It is better to start with request response then move critical parts to microservices
+
+Event delivery patterns
+- Event streaming: temporary/primary storage of events by consumer even if consumed and so do new consumers.
+**Used for reliable delivery as event is retained
+**pattern/anomaly detection
+
+- Pub/sub
+A channel is subscribed to and limited event is accessed, event is deleted as soon as all subscribers receive it,
+new subscribers receive only new events
+** message broker is a temporary storage
+** Fire and forget
+** Broadcasting
+** Buffering

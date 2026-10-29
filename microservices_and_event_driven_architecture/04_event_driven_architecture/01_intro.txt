@@ -1,0 +1,30 @@
+Motivation
+Video on demand subscription service in microservice architecture using the API gateway to
+subscription service, payment service, recommendation, each service must process subscription request for
+subscription to be successful.
+Approach 1: Send subscription request to subscription service which updates user info ij its db, it then sends a request to
+the payments service which connects with third part api and saves on success and then send request to profile creation service
+which then updates its db, the confirmation is then sent in reverse to the sender till the subscription service responds to user
+In this approach there is 100% guarantee that a response on success means  this takes subscription is a success but this takes time
+and is a bad user experience. Also if connection between service is bad or retried or third party service is down we cannot respond
+to the user to reduce waiting time as user will be erroneously billed, or inconsistent state if a service crashes during request.
+The more microservice the longer the wait time for consistency
+
+Approach 2  Orchestration service broadcasts request to all services at once with latency being related to the slowest service, this can also be too slow
+e.g 3rd party service has issues and the orchestration service is tightly coupled to other services and if a service has an issues the subscription fails
+so we use event driven architecture to solve all these problems
+
+Fundamental concepts
+An event is a fact, action, change that is immutable that occurs in our our system and can be stored indefinitely and can be consumed multiple times by multiple services
+Producer, Message broker and consumer take part in this process
+The message broker routes events to services and adds redundancy as it stores the event
+
+Request-response vs Event Driven Model
+-Synchronous vs Asynchronous communication in request response vs event driven as publisher does not expect response from consumer
+and it is not responsible for the event delivery
+-Inversion of control: Sender needs to be aware of receivers and their api making it dependent on receiver, while publisher does not care or need
+to be aware of receivers in event driven model decoupling them(loose coupling)
+
+Example of Event Driven Architecture
+A message broker is placed between the services and the subscription service sends a success response to user, the payment service consumes the event from the
+subscription service and process it then it emits a new event to the recommendations service which processes it and optionally emits a notification event to notify user

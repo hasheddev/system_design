@@ -1,0 +1,20 @@
+Message Broker Technologies - Delivery Guarantees
+Apache Kafka
+Producer Delivery Semantics - At most once, At least once, Exactly once
+
+Consumer Receipt Semantics - At most once, At least once, Exactly once
+
+Note: Apache Kafka supports Exactly Once Delivery Semantics when transferring and processing data between Kafka topics.
+
+Amazon SQS
+Amazon SQS Standard queues - At-least-once delivery
+
+Exactly-once processing - This applies only to publishing events into an SQS queue.
+
+Google Cloud Pub/Sub
+Exactly-once delivery
+
+Microsoft Azure
+Event Hubs output - Exactly Once Delivery
+
+Event Grid message delivery and retry - At Least Once Delivery

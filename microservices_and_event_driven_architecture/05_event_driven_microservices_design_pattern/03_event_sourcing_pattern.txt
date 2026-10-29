@@ -1,0 +1,28 @@
+Data is usually stored in the db and new state overwrites data and we use backups for previous state adn most operations are crud
+This does not work if we need to know every step that leads to the current state e.g bank history
+We need visualization, auditing, correction, merchant inventory state to know how we got to current values
+
+We store events that describe changes and as they are immutable adn append new events, we replay events to arrive at current state
+For bank account we store transactions and replay it to get current account state, we can notice duplicate transaction, detect fraudulent activities
+and audit account.
+
+Benefits
+Visualization, Auditing, Corrections, High write performance
+
+Storage
+- We can store data as events in database to perform query/analytics for orders
+Complex Read Queries
+High Write Amplification & Indexing Overhead
+
+-Storage in message broker that are optimized for event handling and ordering while not optimized for queries
+Strict Retention Limits
+Replay Bottlenecks
+
+Multiple updates slow down updates
+
+Read and reconstruct
+Replaying all transaction is not efficient so
+- We take a snapshot of account once a month and use it for replay from last snapshot till current date
+- Cqrs
+
+Cqrs and event sourcing are combined in the industry adn we get only eventual consistency

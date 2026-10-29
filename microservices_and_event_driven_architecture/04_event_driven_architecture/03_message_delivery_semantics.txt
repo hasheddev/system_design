@@ -1,0 +1,26 @@
+Message delivery problem
+Request response is synchronous, response is sent after db update, sometimes receiver crashes while processing or response does not arrive to
+sender after processing
+
+Event delivery problems
+There is the same problem as above as we have publisher, subscriber and consumer, message may be lost, acknowledgement may be lost during or after processing hence
+semantics are used
+
+At most Once, At least Once Delivery Semantics
+- At most Once: We May lose data but we want to avoid data duplication, do not resend event even is acknowledgement fails. best case is data is not lost if
+broker does not send acknowledgement but if broker does not receive event or crashes we may lose event. Subscriber acknowledging event before processing/storing, if consumer
+crashes and restarts after processing we are okay but if it crashes before processing we lose event
+*This perfect for when some data lose is okay and can be inferred e.g ride sharing service losing some location information can be extrapolation, Least overhead/lowest latency
+Most cost effective for log aggregation from hundreds of server
+- At least once: No Acknowledgement within a given time period leads to resending event, subscriber acknowledges event only after processing, we can retry reliably even if subscriber
+crashes before processing. If subscriber crashes after processing we get double processing of event
+*Data loss is unacceptable  but duplication is acceptable e.g push notification for product shipment
+Review retry since logic may override or reject the review this is okay
+This has increased latency as publisher waits a while before resending event hence it is not great for realtime or high throughput
+
+Exactly Once delivery semantics
+Most desirable for financial processing but is most difficult to achieve and has highest overhead and latency not all brokers offer it and
+those that offer may not offer what is expected
+Publisher obtains idempotency id for event frm broker or another service and resends event with same id if not acknowledged,broker ignores event if already present or adds it if present if it provides the event id
+The event is produced once on the producer side. Subscriber process and acknowledges after processing, but if it crashes after processing but before acknowledgement, broker resends event and we process twice, we add
+an event id to db record to avoid this

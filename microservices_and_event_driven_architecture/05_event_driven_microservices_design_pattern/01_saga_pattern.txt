@@ -1,0 +1,16 @@
+Problem Statement
+One db per microservice principle, this decoupling does not allow for atomic transaction updates but microservices architecture does not allow for this
+We use SAGA pattern to perform distributed transactions involving multiple microservices where each successful operation triggers the next, if one operation fails we rollback previous operation with
+opposite effect
+
+Two ways to implement
+- Stateful Workflow orchestration service ensures transaction is in right order and applies compensation where needed e.generateVacation booking which involves
+payment, flight to dest, flight from dest, hotel room reservation, car rental, we can allow either all succeeding or any failing means aborting
+We have payment service, flights reservation service. booking service, car rental service, order service and we define workflow activities in the orchestration service.
+First we secure entire vacation then we reserve flight, book hotel, reserve car, order services stores entry for user with all details about the booking for successful scenario, we add compensating operation
+for each activity: crediting user account with same amount, cancel flight, cancel booking, cancel reservation, update order status to cancelled
+Implement workflow operation to call api for microservices
+Implement workflow operation to call api for microservice for compensation
+
+- Event Driven Model: event publishing is used to compensate or notify on successful
+Payment service responds to user, bills suer send event to flights service and this goes on until order service gets the success event and we notify use with a notification service on event outcome

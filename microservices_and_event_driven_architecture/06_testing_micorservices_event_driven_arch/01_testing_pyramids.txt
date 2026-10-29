@@ -1,0 +1,25 @@
+Testing pyramid
+Unit: cheap and fast we should have more of them compare to others but give least confidence in overall system
+Integration Verify integrations, bigger and slower
+E2e test: test user journey to tests specification match, slowest, complex should be smallest and give highest confidence 
+
+Each team follows the pyramid for each service then place this into a bigger pyramid
+
+Challenges
+Challenge 1 e2e
+While e2e provide confidence it is:
+complex to setup and maintain
+no clarity about ownership
+one team may block everyone
+developers may ignore failing tests to release  features
+very costly to maintain
+
+Companies either invest too much in these tests or do not invest at all
+
+Challenge 2 integration tests
+- Difficult to run and creates tight coupling by building, configuring and running both microservices and dependencies for team depending on a service
+For team that maintains the service they have to ensure consumer can access service they need to build and run them
+
+Challenge 3 Event driven microservices
+We do not know about consumers and cannot run integration test
+wile consumers need to run producers and message brokers to test

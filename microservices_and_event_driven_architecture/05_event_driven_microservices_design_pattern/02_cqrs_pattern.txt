@@ -1,0 +1,26 @@
+CQRS
+Command query responsibility segregation
+Command: Action that results in data change, insert, update, delete
+Query: Reads data and returns as is or aggregates data
+We segregate code and storage for command and query activities in our system
+Query db contains copy of command db, we use event driven architecture to update query service
+
+Use cases
+*Separation of concern in terms of business logic and performance
+- goes really well wil single responsibility principle
+- Higher performance
+- Higher scalability
+*Loss of Join ability is compensated by cqrs where a third microservice stores data in a way that is optimized for reads and
+stores join view of data from service A and B and service A and B notifies it on data change
+
+Eventual consistency is guaranteed
+
+Example
+Crowd sourced review about services like car dealership, restaurant e.t.c
+We store reviews for services and ratings for recommendation
+user service, restaurant, reviews service, we have conflicting requirements for restaurant update or reviews update, we validate input and
+only specific users can update service info like restaurant image.
+Infrequent updates happen for restaurant while reviews are more frequent for writes
+For reads we need to join data from both service
+We use business search service with text search db and publish events to it to update reviews and restaurant info and it is free from complex authentication
+logic

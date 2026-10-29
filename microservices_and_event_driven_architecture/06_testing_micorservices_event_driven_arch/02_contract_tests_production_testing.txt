@@ -1,0 +1,47 @@
+Integration with mocks
+Mock api layer of microservice B to send response reduces coupling and overhead of running real instances
+However contract may get out of sync without detecting it so contract tests are used
+
+Contact tests for synchronous communication
+A dedicated tool is used to keep Mocks in sync tha tests request and response
+The test tests request and response and each request and expected response is recorded in a contract file that is shared with the producer microservice using this the producer
+replays recorded request to real microservice and verify request and response match
+
+Contract test for asynchronous communication
+Each team create lightweight mock of event broker that records and shares file as contract file
+The above is great for Integration tests
+
+Production testing using Blue/green and canary  testing
+Blue green releases two identical where blue represents old version, we use load balance to shift traffic to green environment and redirect back if issues are detected
+If no issues are detected we direct all traffic to green environment and gradually decommission the old environment
+
+How it works:
+You deploy your new version (e.g., v2.0) to the Green environment.
+You run integration, automated smoke, and health checks directly against Green while it has zero real users.
+Once verified, you flip a switch at the Load Balancer, DNS, or API Gateway level to instantly route 100% of incoming user traffic from Blue to Green.   
+The Safety Net: Blue is kept alive and warm. If Green starts throwing massive errors or crashing immediately after the switch, you flip the load balancer switch right back to Blue in seconds.
+Best for: Systems where you need an instantaneous, atomic rollback mechanism and can afford to run double the infrastructure capacity temporarily.
+
+Canary
+You deploy the new version (v2.0) to just a small sliver of your server cluster (e.g., 1 out of 20 pods/instances), or you use an ingress controller / service mesh (like Istio) to route traffic.
+The load balancer sends 95% of traffic to v1.0 (Stable) and 5% of traffic to v2.0 (Canary).
+Automated monitoring systems and logs watch the Canary nodes closely for error spikes, memory leaks, or latency regressions.
+The Phased Rollout: If metrics look clean after a set duration, you automatically scale up the traffic: 5% => 25% => 50% => 100%.
+The Safety Net: If the canary instances start throwing 500 errors, the traffic router instantly cuts off the canary slice, routing 100% of users back to v1.0. Only 5% of your user base experienced the bug, minimizing the "blast radius".
+Best for: High-traffic applications where a bug hitting 100% of users simultaneously is catastrophic, and you want to test how the code behaves under real-world production load.
+
+Use only if setting up real microservices is too complex or expensive
+
+Contract Testing Solutions
+Pact - An open-source contract testing tool that allows API consumers and API providers to define and verify their API contracts. Pact supports many programming languages and frameworks.
+
+
+
+Spring Cloud Contract - An open-source umbrella project for contract testing solutions. Contains the Spring Cloud Contract Verifier project that enables Consumer Driven Contract (CDC) development of JVM-based applications using Groovy DSL or YAML.
+
+
+
+PactFlow -  A commercial offering that manages the lifecycle of contracts defined by contract testing tools (like Pact, Spring Contract, etc.) and provides a workflow to manage them in your CI/CD pipelines.
+
+Supports all JVM languages as well as Ruby, Golang, Node.js / JavaScript, Python, Objective-C / Swift, .NET, PHP, C++, and Rust
+
