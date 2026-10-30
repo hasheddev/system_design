@@ -1,0 +1,18 @@
+An orchestrator manages entire life cycle of containers ina system like:
+Deployment
+Resource allocation
+Health monitoring
+Self healing
+Scheduling
+Load balancing
+Scaling
+Container discovery
+Networking
+
+For higher availability we have multiple clusters running on different regions or cloud providers with global load balancer routing requests based on 
+use proximity, cluster health. This requires expertise
+
+Cost
+Cost is amortized across all teams
+
+To amortize means to gradually pay off a debt or spread out the cost of an asset over a set period of time.

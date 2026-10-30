@@ -1,0 +1,18 @@
+Distributed Tracing Solutions
+Distributed Tracing Instrumentation Frameworks
+OpenTelemetry - OpenTelemetry is a is a collection of APIs, SDKs, and tools for instrumenting, collecting, and exporting metrics, logs, and traces. It is open-source and is available in many programming languages such as C++, #/.NET, Erlang/Elixir, Go, Java, JavaScript, PHP, Python, Ruby, Rust, and Swift.
+
+OpenTelemetry is also a specification that describes the cross-language requirements and expectations for all OpenTelemetry implementations.
+
+Distributed Tracing Backends
+Jaeger - Open source, distributed tracing platform that is cloud-native, infinitely scalable, and 100% free. It enables the monitoring of distributed workflows, tracking down root causes for performance bottlenecks, and analyzing service dependencies.
+
+Requies OpenTelemetry for instrumentation .
+
+Zipkin - Another open-source distributed tracing system. Its data served to the UI is stored in memory or persistently within Apache Cassandra or Elasticsearch. Originally developed at Twitter in 2010 and based on Google's Dapper papers.
+
+Supports a variety of official and community-created instrumentation frameworks.
+
+Uptrace - Uptrace is an OpenTelemetry-based observability platform that helps you monitor, understand, and optimize distributed systems.
+
+It is a commercial, cloud-based solution that supports a variety of features such as App Performance Monitoring, metrics collection and visualization, logs injection and analysis, and more.

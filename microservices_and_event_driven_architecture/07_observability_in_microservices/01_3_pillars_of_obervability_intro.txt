@@ -1,0 +1,29 @@
+Observability vs Monitoring
+Observability and Monitoring both provide tools to collect data, give insights and detect issues however
+Monitoring is the process of collecting, analyzing and displaying a predefined set of metrics allowing us to find out if something goes
+wrong by attaching alarms to those metrics. This however does not tell us what is wrong and how to solve it.
+Observability enables us to actively debug, search for patterns follow inputs and outputs and get insights into system behavior allowing us:
+- to follow individual requests, transactions, events
+- Discover and isolate performance bottlenecks
+- Point us to the source of the problem
+
+Importance
+Debugging is relatively simple in a monolithic app we might ssh into it while in a microservice a request might involve
+multiple services and databases, message brokers that are on different machines and most issues happen at the boundary of the api request
+This makes traceability absolutely critical
+
+Three Pillars
+- Distributed logging
+Append only files that record events in app processes, container, db, server in
+structured or semi-structured way with metadata like timestamp, request, method, class, app
+
+- Metrics
+Regularly sampled data points of numeric values like counters, distributions, gauges examples:
+request per min,  cpu utilization, error per hour, latency distribution, cache hit rate
+
+- Distributed tracing
+Path of a given request through several microservices, time taken to process it by each service. It may include
+request headers, response status code
+We use all three to debug further issues to trace a request, isolate it to a service and narrow it down to a class or method
+and we may fix by:
+issuing a rollback, making a hot fix, adding more instances, traffic diversion e.t.c

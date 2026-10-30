@@ -1,0 +1,33 @@
+Logging
+Simplest way to provide insight into app state
+A logline can represent a state like an event e.g request received or an action e.g db query, an exception, an error and parameters that lead to the error
+It is not practical to ssh into services one by one to inspect millions of loglines per day
+
+Distributes logging best practices
+- Centralized logging system that is highly scalable that parses and indexes the logs for easy searching and filtering
+by attributes ike host, microservice, region
+
+- Predefined schema/Structure across all microservices
+Logs should be human readable and machine parsable, grouped and analyzable
+Use structures like Json, xml, Logfmt
+
+- Use log levels like Trace, Debug, Info, Warn, Error and Fatal
+We can have tools that group, alert or notify based on certain keyword like error,
+high processing time, unexpected inputs should be logged in warn levels
+Debug, Trace can be used for granular debugging
+
+- Correlation Id use identifiers for every user request/transaction to make them more identifiable
+
+- Contextual info like stack trace for error should be added, method parameters, query string for a query that took a lot of time,
+request content
+
+Common datapoints
+Service name
+Hostname /Ip address
+User id
+Timestamp
+
+Contextual information considerations
+
+Log only necessary data
+Do not log sensitive data or personally identifiable information like username, email

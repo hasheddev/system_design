@@ -1,0 +1,24 @@
+Function as a service
+- Video on demand platform and as an additional offering we sell tickets for out partners with dedicated services
+Live events happen occasionally we may sell cheap tickets more than expensive tickets and if we do not sell tickets all the time
+but get spikes for sale we pay for idle time and load balancer and autoscaling.
+- For a digital advertisement company that provides insight into adverts, and it is nto cost efficient as requests might be spikes per month or quarter
+This costs money when during other months or days the request are not made to the service
+
+FaaS allows us to architect system in event driven mode from software to infrastructure, we provide events to handle and logic to execute the event and only when event is triggered is code deployed and code run 
+If traffic is seasonal provider handles scalability for traffic spikes
+Pricing mode is based on request number, time and memory to handle request but we do not pay when event do not happen
+
+Benefits and drawbacks
+
+**Reduced infrastructure cost
+Reduced overhead costs for scalability for hight traffic spikes
+Saves development cost for building, packaging and deploying microservice
+
+**If pattern changes infrastructure cost increases significantly and as logic becomes more complex handling requires more time/memory deploying becomes cheaper option
+Unpredictable performance not best option for latency sensitive workflow
+Multi tenant deployment
+Cloud vendor has source code
+
+Can be most Cost efficient if used correctly and may be most expensive if not sued for proper service
+Worst security and performance of all deployments

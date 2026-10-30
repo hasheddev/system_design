@@ -1,0 +1,24 @@
+Intro
+Measurable or countable signals of software that help monitor system's health and performance and are typically regularly sampled, usually come in numerical values and
+alerted based on values. They are the easies to collect analyze, visualize into dashboards e.g dashboard per microservice, historic comparison, this makes debugging faster compared to logging
+
+Problems of collecting too many Metrics
+There are a large number of metrics to collect but collecting everything is an anti-pattern as:
+It becomes expensive
+Information overload we cannot easily debug the cause of error as we do not know the dashboard to check or dashboard graphs cannot ft the screen
+
+5 Golden Metrics based on Google SRE Book The four golden signals and The USe Method by Branden Gregg
+- Traffic: Load per unit of time place on system like http request per sec, db transaction per sec, queries per second, event received per sec, events received per sec,
+Incoming request + outgoing requests per sec
+- Error: Error rate is great for setting alert, error type
+example: number of exception, status code like 4xx, 5xx, count response that exceed latency threshold as errors, failed event, failed delivery, aborted transactions
+- Latency: Time taken to process request
+Consideration: distribution vs latency  95th percentile vs average
+Separate latency of successful operation from latency of failed operations
+- Saturation(extra work): How overloaded or full a service/resources is, important for queues like message brokers as this might indicate service insufficiency (scalability issues)
+Request queue of db request often mean hardware update or sharding in memory db,
+Work queue in microservice indicates microservice logic is slow. This might explain latency/request timeout
+- Utilization: How busy a resource is [0 - 100%] in a period of time, applies to memory, cpu, disk space, we see performance degradation in most cases before 100 % utilization e.g scale out at 80% as we have higher latency at this pont
+, adding more db when space is about to run out, we want higher granularity like per min, successful
+
+The 5 are not the only ones to collect, we can collect more based on business but they apply to any system

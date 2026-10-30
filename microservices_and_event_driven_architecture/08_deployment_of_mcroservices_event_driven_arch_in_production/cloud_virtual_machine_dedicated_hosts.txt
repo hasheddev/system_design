@@ -1,0 +1,28 @@
+Cloud Virtual Machine, Dedicated Hosts and Instances - Solutions
+Multi-Tenant Virtual Machine Cloud Service
+Amazon Elastic Compute Cloud (EC2) Instances - Provides on-demand, scalable computing capacity using "virtual servers."
+
+Offers different instance types optimized for different workloads such as General Purpose, Memory, Compute, Storage, and more.
+
+GCP Compute Engine - Offers secure and customizable virtual machines running on Google’s infrastructure.
+
+You can choose from a variety of virtual machines for different architectures (x86, ARM, etc) and workloads such as "Scale Out", general purpose, ultra-high memory, compute-intensive, accelerator-optimized machines, and more.
+
+Microsoft Azure Virtual Machines - Allows creating Linux and Windows virtual machines (VMs) in seconds. Includes several series of virtual machines for testing/development, Economical burstable VMs, general-purpose computing, Optimized for in-memory applications, Compute-optimized virtual machines, Memory and storage optimized virtual machines, High-Performance Computing virtual machines, Storage-optimized virtual machines, GPU-enabled virtual machines and more.
+
+Dedicated Hosts and Single Tenant Virtual Machine Cloud Services
+AWS Dedicated EC2 Instances - Dedicated EC2 Instances are regular EC2 instances that run on hardware that's dedicated to a single customer with an AWS account.
+
+Dedicated EC2 Instances that belong to different AWS accounts are physically isolated at a hardware level.
+
+However, EC2 Dedicated Instances might share hardware with other instances from the same AWS account that are not Dedicated Instances.
+
+Amazon EC2 Dedicated Hosts - An Amazon EC2 Dedicated Host is a physical server fully dedicated for your use so you can help address corporate compliance requirements. You can find the pricing of Dedicated Hosts here.
+
+GCP Sole-Tenant Node - A Sole-tenant node gives you exclusive access to a physical Compute Engine server that is dedicated to hosting only your project's VMs.
+
+Within a sole-tenant node, you can provision multiple VMs on machine types. Alternatively, you can meet security or compliance requirements with workloads that require physical isolation from other workloads or VMs by not sharing the node with any other project.
+
+Microsoft Azure Dedicate Hosts - Azure Dedicated Host offers physical servers designed to host one or more Azure virtual machines. These servers are exclusively dedicated to your organization and its workloads, ensuring that the capacity is not shared with any other customers.
+
+This level of isolation at the host level serves to meet compliance requirements effectively.

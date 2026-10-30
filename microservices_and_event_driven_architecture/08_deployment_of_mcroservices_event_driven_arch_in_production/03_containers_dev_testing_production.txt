@@ -1,0 +1,14 @@
+Most popular and trending
+Problem Statement
+Development Production environment parity
+
+Benefits
+parity and portability
+Usable in ci/cd pipelines
+Faster startup time
+Cheaper and efficient resource utilization
+
+Challenges
+Two layers of abstraction: cloud host and container layer abstraction, microservice discovery and connection
+scalability, availability, monitoring crashing service, microservice update.
+This is a nightmare that is impossible

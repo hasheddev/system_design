@@ -1,0 +1,26 @@
+Motivation
+An order transaction example that goes to the api gateway which verifies from the auth service and sends the request to the order service,
+which precesses and emits event to payment service that kick starts events to a chain of services that culminates in notification on order status.
+If a user complains that they do not receive email or they receive it days after order.
+Tracing through logs, third party api, database for hundreds of services makes it impossible to what is involved in request processing or in what order.
+Distributed tracing is a method of tracking request from user to flow though services and databases and we collect information on request processing time and status
+of each component
+It helps narrow down the faulty component or the communication problem even if it is not enough on its own to solve the problem
+We use logs and metrics to debug issue further
+
+Terminology + How it works
+We generate unique id called a trace id and place it in a trace context object that contains key data about request usually through http header from service to service, we need a tracing
+library/sdk to instrument the tracing, data is collected and propagated from service to service and this is aggregated based on the trace id.
+Duration and parts is tracked by breaking trace into spans like(db query)
+ or dev creation to visualize and measure separately, a missing span means a bug.
+ We can organize span in a parent child hierarchy.
+
+Trace data is pulled by agent that runs on host as a service instance that sends data to a queue which analyses them, aggregates them and stores them in a db and a dev can query and visualize this
+
+Challenges in Event driven architecture
+- We need to manually instrument the code and we may need to learn a library and depend on it or span may become broken or too broad
+- Running an agent costs money and storing and processing spans costs money(big pipeline), storage costs is the most and retaining for weeks is a challenges
+Most companies use sampling on client side  1 / 1000 request but this makes it hard to reproduce issue
+- Trace size and information in each may be too big to be loaded or hard to look at
+
+It is a very powerful and debugging tool and is important for troubleshooting with confidence

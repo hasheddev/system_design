@@ -1,0 +1,13 @@
+Serverless Deployment for Microservices using Function as a Service - Solutions
+Amazon Web Services (AWS)
+AWS Lambda - A serverless, event-driven compute service that enables you to execute code for nearly any kind of application or backend service without the need to set up or oversee servers.
+
+You can involve the execution of your code within a Lambda through more than 200 AWS services and various software-as-a-service (SaaS) applications.
+
+You are billed solely for the resources you consume.
+
+Google Cloud Platform (GCP)
+Cloud Functions - Allows executing your code in the cloud without the need to handle servers or containers. By utilizing GCP's scalable Functions as a Service (FaaS) offering, you only pay for what you use, following a pay-as-you-go model.
+
+Microsoft Azure
+Azure Functions - An on-demand cloud service that provides the latest infrastructure and resources required to operate your applications. Allows you to fully focus on the code while Azure Functions manages the remaining aspects.

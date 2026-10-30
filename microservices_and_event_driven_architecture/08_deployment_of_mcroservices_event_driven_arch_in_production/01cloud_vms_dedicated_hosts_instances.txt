@@ -1,0 +1,47 @@
+1. Multi-tenant Virtual machine deployment
+A virtual machine is an isolated environment running on a real physical environment that acts like a computer with its own os and virtual resources like cpu, memory
+mapped to real resources by hypervisors adn resource depends on configuration and cost, and a physical machine may run mi==different services that may belong to different
+companies(multi-tenancy) as we have no control of this and this allows providers to split resources efficiently and offer competitive prices
+
+*Benefits
+Affordable, flexible pricing
+Pay per user: rate depends on capability and payment is for rented vm for rent duration
+
+*Downside
+- Security risk due to multi tenancy as two vms are supposedly isolated and breach in one vm is not supposed to affect the other but in the real world a hacker that gains access to the vm may
+gain access to other vms on the same host due to poor Security
+Cloud vendors make great effort to prevent this. Some industries dues to compliance are not able to tolerate this small risk e.g banking, healthcare, government, national Security
+- Noisy neighbor: If a co tenant is hogging resource as not all resources can not be reasonably isolated (cpu can) but network card, internal bus that transfers data and some resources cannot be split.
+The hypervisor may also consume resources
+Not a lot of data suggests the impact of neighbor but the impact is still there
+SO for latency sensitive services like High frequency trading, Gaming and video streaming multi-tenet deployment is not the best option
+- Cloud vendor lock-in
+- Inefficient resource utilization
+- Slow to start
+- Not portable
+Multi cloud or Hybrid cloud are a nightmare
+But containers solve this issue
+
+2. Dedicated hosts/instances
+CLoud provider runs server dedicated to accounts services belonging to organization only slightly more expensive as hardware cannot be allocated more efficiently
+This eliminates  overhead and noisy neighbor
+- Downside: much more expensive
+
+Multi-tenant provides best cost performance but is not most secure or performant
+Single Tenant is more secure and performant but more expensive
+Dedicated host is most secure and performant
+
+
+Single-Tenant (Isolated Instances)
+What it is: The cloud provider guarantees that all the virtual instances (VMs) running on a specific piece of physical hardware belong exclusively to you. However, you don't care which physical server you get, and you manage instances, not the underlying hardware.
+
+Analogy: Renting a standalone house in a gated community. The property manager owns the land and structure, but no one else lives on your plot.
+
+Use Case: Strict security requirements or compliance frameworks (like HIPAA or PCI-DSS) that prohibit sharing physical memory or CPU caches with other companies to prevent side-channel attacks.
+
+Dedicated Host
+What it is: You rent an entire physical server outright. You have total visibility into the underlying physical hardware attributes (such as socket count, core counts, and hardware serial numbers). Furthermore, you control where your virtual instances are placed on that physical host.
+
+Analogy: Buying the actual plot of land and the building, giving you the right to decide exactly which room goes where, how many people sleep in each room, and bringing your own specialized architectural blueprints.
+
+Use Case: Bring-Your-Own-License (BYOL) software licensing (like Windows Server, Oracle, or SQL Server) where software vendors license software based on physical cores or sockets rather than virtual processors. It is also used for extreme hardware affinity requirements (e.g., binding software licenses to specific hardware serial numbers).
